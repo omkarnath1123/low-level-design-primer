@@ -1,0 +1,10 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Locally cloned solution repos — regenerate with: python3 clone_solutions.py
+solutions/
