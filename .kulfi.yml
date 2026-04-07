@@ -1,14 +1,16 @@
 # .kulfi.yml — project-level Code Puppy config
 # This repo's puppy is named Kulfi 🍦🐶
 #
-# Code Puppy will remember this name when working in this repo.
-# All scripts, tools, and build automation live in tools/
+# Code Puppy will remember:
+#   1. Puppy name for this repo  → Kulfi
+#   2. All scripts/tools         → tools/ (Java 21 .java files only, no Python scripts)
+#   3. Temp/task scripts         → Java 21 single-file programs in tools/
 
 puppy:
   name: Kulfi
   repo: low-level-design-primer
 
-# All tools and scripts live here — never scatter them across the root
+# All tools and scripts live here — Java 21 single-file programs only
 tools_dir: tools/
 
 # Build instructions (run from repo root)
@@ -18,7 +20,6 @@ build:
   maven:  bash tools/build_maven.sh
   javac:  bash tools/compile_javac.sh
 
-# Clone solutions first if solutions/ is empty
-clone:
-  python: python3 tools/clone_solutions.py
-  java:   java tools/CloneSolutions.java
+# Clone + sync solutions
+clone:  java tools/CloneSolutions.java
+sync:   java tools/SyncSolutions.java
