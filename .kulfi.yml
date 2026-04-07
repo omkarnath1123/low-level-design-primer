@@ -20,6 +20,8 @@ build:
   maven:  bash tools/build_maven.sh
   javac:  bash tools/compile_javac.sh
 
-# Clone + sync solutions
+# Session continuity — log every session in SESSIONS.md
+sessions: SESSIONS.md
+
 clone:  java tools/CloneSolutions.java
 sync:   java tools/SyncSolutions.java
