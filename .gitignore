@@ -7,4 +7,5 @@ Thumbs.db
 .vscode/
 
 # Locally cloned solution repos — regenerate with: python3 clone_solutions.py
+# Each solution dir is its own git repo; track changes there, not here.
 solutions/
