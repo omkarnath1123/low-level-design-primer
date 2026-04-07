@@ -5,6 +5,8 @@ all GitHub solution repos into solution-N subdirectories.
 
 Non-GitHub links (articles, blogs, leetcode, etc.) are noted but skipped.
 Dirs are still created even when no GitHub solutions exist.
+
+Run from repo root:  python3 tools/clone_solutions.py
 """
 
 import re
@@ -12,7 +14,7 @@ import os
 import subprocess
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).parent
+REPO_ROOT = Path(__file__).parent.parent  # tools/ → repo root
 SOLUTIONS_MD = REPO_ROOT / "solutions.md"
 SOLUTIONS_DIR = REPO_ROOT / "solutions"
 

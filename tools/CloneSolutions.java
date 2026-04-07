@@ -15,8 +15,9 @@ import java.util.regex.Pattern;
  * Non-GitHub links (articles, blogs, leetcode, medium…) are skipped.
  * Problem dirs are still created even when no GitHub solutions exist.
  *
- * Run with:  java CloneSolutions.java
+ * Run with:  java tools/CloneSolutions.java      (from repo root)
  * Requires:  Java 21+,  git on PATH
+ * Note:      CWD must be the repo root — solutions.md and solutions/ are resolved from there
  */
 public class CloneSolutions {
 
