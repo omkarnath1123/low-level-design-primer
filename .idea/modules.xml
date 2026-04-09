@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/solutions/cab-booking-like-uber-ola/solution-1/cab-booking.iml" filepath="$PROJECT_DIR$/solutions/cab-booking-like-uber-ola/solution-1/cab-booking.iml" />
+  <module fileurl="file://$PROJECT_DIR$/solutions/design-cache-system/solution-1/lru-cache.iml" filepath="$PROJECT_DIR$/solutions/design-cache-system/solution-1/lru-cache.iml" />
+  <module fileurl="file://$PROJECT_DIR$/solutions/design-chess-game/solution-1/chess-game.iml" filepath="$PROJECT_DIR$/solutions/design-chess-game/solution-1/chess-game.iml" />
+  <module fileurl="file://$PROJECT_DIR$/solutions/design-parking-lot-system/solution-1/parking-lot.iml" filepath="$PROJECT_DIR$/solutions/design-parking-lot-system/solution-1/parking-lot.iml" />
+  <module fileurl="file://$PROJECT_DIR$/solutions/movie-ticket-booking/solution-1/movie-ticket.iml" filepath="$PROJECT_DIR$/solutions/movie-ticket-booking/solution-1/movie-ticket.iml" />
+  <module fileurl="file://$PROJECT_DIR$/solutions/uber-eats-door-dash-swiggy/solution-1/food-delivery.iml" filepath="$PROJECT_DIR$/solutions/uber-eats-door-dash-swiggy/solution-1/food-delivery.iml" />
+  <module fileurl="file://$PROJECT_DIR$/solutions/cricinfocricbuzz/solution-2/cric-score.iml" filepath="$PROJECT_DIR$/solutions/cricinfocricbuzz/solution-2/cric-score.iml" />
+  <module fileurl="file://$PROJECT_DIR$/solutions/design-amazon-locker-service/solution-1/amazon-locker.iml" filepath="$PROJECT_DIR$/solutions/design-amazon-locker-service/solution-1/amazon-locker.iml" />
+  <module fileurl="file://$PROJECT_DIR$/solutions/design-bill-sharingexpense-sharing-like-splitwise/solution-1/bill-sharing.iml" filepath="$PROJECT_DIR$/solutions/design-bill-sharingexpense-sharing-like-splitwise/solution-1/bill-sharing.iml" />
+  <module fileurl="file://$PROJECT_DIR$/solutions/design-distributed-id-generation-like-twitter-snowflake-id/solution-1/distributed-idgen.iml" filepath="$PROJECT_DIR$/solutions/design-distributed-id-generation-like-twitter-snowflake-id/solution-1/distributed-idgen.iml" />
+  <module fileurl="file://$PROJECT_DIR$/solutions/design-parking-lot-system/solution-2/parking-lot-v2.iml" filepath="$PROJECT_DIR$/solutions/design-parking-lot-system/solution-2/parking-lot-v2.iml" />
+  <module fileurl="file://$PROJECT_DIR$/solutions/design-snake-and-ladder-game/solution-1/snake-and-ladder.iml" filepath="$PROJECT_DIR$/solutions/design-snake-and-ladder-game/solution-1/snake-and-ladder.iml" />
+  <module fileurl="file://$PROJECT_DIR$/solutions/design-true-caller/solution-1/truecaller.iml" filepath="$PROJECT_DIR$/solutions/design-true-caller/solution-1/truecaller.iml" />
+  <module fileurl="file://$PROJECT_DIR$/solutions/design-vehicle-car-rental-application-like-zoomcar/solution-1/car-rental.iml" filepath="$PROJECT_DIR$/solutions/design-vehicle-car-rental-application-like-zoomcar/solution-1/car-rental.iml" />
+  <module fileurl="file://$PROJECT_DIR$/solutions/e-commerce-review-system/solution-1/ecomm-reviews.iml" filepath="$PROJECT_DIR$/solutions/e-commerce-review-system/solution-1/ecomm-reviews.iml" />
+  <module fileurl="file://$PROJECT_DIR$/solutions/cricinfocricbuzz/solution-1/cricket-portal.iml" filepath="$PROJECT_DIR$/solutions/cricinfocricbuzz/solution-1/cricket-portal.iml" />
+  <module fileurl="file://$PROJECT_DIR$/solutions/implement-a-logger/solution-1/logger.iml" filepath="$PROJECT_DIR$/solutions/implement-a-logger/solution-1/logger.iml" />
+    </modules>
+  </component>
+</project>

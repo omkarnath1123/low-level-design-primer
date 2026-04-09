@@ -3,11 +3,15 @@
 Thumbs.db
 
 # ─── IDE — IntelliJ IDEA ──────────────────────────────────────────────────────
-.idea/
-*.iml
+# .idea/ and *.iml are NOT ignored — they are committed so IntelliJ opens
+# this repo fully indexed with all modules. Only user-local files are excluded.
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/dictionaries/
+.idea/shelf/
 *.ipr
 *.iws
-out/
 
 # ─── IDE — VS Code ────────────────────────────────────────────────────────────
 .vscode/
@@ -28,20 +32,14 @@ dist/
 nbdist/
 .nb-gradle/
 
-# ─── Build outputs — Maven ────────────────────────────────────────────────────
-target/
-
-# ─── Build outputs — Gradle ───────────────────────────────────────────────────
-build/
-.gradle/
-gradle-app.setting
-.gradletasknamecache
-HELP.md
-
-# ─── Build outputs — raw javac ────────────────────────────────────────────────
-# (cricinfocricbuzz/solution-1 uses javac directly)
-**/CricketPortal/out/
-**/MovieTicketBooking/out/
+# ─── Build outputs (scoped to solutions — source is tracked, artifacts are not)
+solutions/**/target/
+solutions/**/build/
+solutions/**/.gradle/
+solutions/**/out/
+solutions/**/gradle-app.setting
+solutions/**/.gradletasknamecache
+solutions/**/HELP.md
 
 # ─── Java artifacts ───────────────────────────────────────────────────────────
 *.class
@@ -49,7 +47,7 @@ HELP.md
 *.war
 *.nar
 *.ear
-# Keep Gradle wrapper jar — it is a required binary in the repo
+# Keep Gradle wrapper jar — it is a required binary committed to the repo
 !gradle/wrapper/gradle-wrapper.jar
 !**/gradle/wrapper/gradle-wrapper.jar
 !gradle-wrapper.jar
