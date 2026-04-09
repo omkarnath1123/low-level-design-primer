@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/low-level-design-primer.iml" filepath="$PROJECT_DIR$/.idea/low-level-design-primer.iml" />
       <module fileurl="file://$PROJECT_DIR$/solutions/cab-booking-like-uber-ola/solution-1/cab-booking.iml" filepath="$PROJECT_DIR$/solutions/cab-booking-like-uber-ola/solution-1/cab-booking.iml" />
   <module fileurl="file://$PROJECT_DIR$/solutions/design-cache-system/solution-1/lru-cache.iml" filepath="$PROJECT_DIR$/solutions/design-cache-system/solution-1/lru-cache.iml" />
   <module fileurl="file://$PROJECT_DIR$/solutions/design-chess-game/solution-1/chess-game.iml" filepath="$PROJECT_DIR$/solutions/design-chess-game/solution-1/chess-game.iml" />
