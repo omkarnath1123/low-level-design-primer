@@ -71,8 +71,3 @@ __pycache__/
 *.zip
 *.tar.gz
 *.rar
-
-# ─── Solutions directory ──────────────────────────────────────────────────────
-# Each solution dir is its own git repo — track changes there, not here.
-# Regenerate with:  java tools/CloneSolutions.java
-solutions/
