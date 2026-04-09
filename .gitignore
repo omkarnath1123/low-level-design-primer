@@ -1,7 +1,78 @@
-# OS
+# ─── OS ───────────────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
 
-# IDE
+# ─── IDE — IntelliJ IDEA ──────────────────────────────────────────────────────
 .idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# ─── IDE — VS Code ────────────────────────────────────────────────────────────
 .vscode/
+
+# ─── IDE — Eclipse / STS ──────────────────────────────────────────────────────
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+# ─── IDE — NetBeans ───────────────────────────────────────────────────────────
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# ─── Build outputs — Maven ────────────────────────────────────────────────────
+target/
+
+# ─── Build outputs — Gradle ───────────────────────────────────────────────────
+build/
+.gradle/
+gradle-app.setting
+.gradletasknamecache
+HELP.md
+
+# ─── Build outputs — raw javac ────────────────────────────────────────────────
+# (cricinfocricbuzz/solution-1 uses javac directly)
+**/CricketPortal/out/
+**/MovieTicketBooking/out/
+
+# ─── Java artifacts ───────────────────────────────────────────────────────────
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+# Keep Gradle wrapper jar — it is a required binary in the repo
+!gradle/wrapper/gradle-wrapper.jar
+!**/gradle/wrapper/gradle-wrapper.jar
+!gradle-wrapper.jar
+
+# BlueJ / legacy tools
+*.ctxt
+.mtj.tmp/
+hs_err_pid*
+
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+
+# ─── Go ───────────────────────────────────────────────────────────────────────
+*.exe
+
+# ─── Archives (never commit generated zips/tarballs) ──────────────────────────
+*.zip
+*.tar.gz
+*.rar
+
+# ─── Solutions directory ──────────────────────────────────────────────────────
+# Each solution dir is its own git repo — track changes there, not here.
+# Regenerate with:  java tools/CloneSolutions.java
+solutions/
