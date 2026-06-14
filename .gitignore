@@ -5,3 +5,35 @@ Thumbs.db
 # IDE
 .idea/
 .vscode/
+*.iml
+
+# Build outputs
+out/
+**/out/
+**/target/
+**/build/
+**/.gradle/
+**/bin/
+
+# Build tool wrappers / caches
+**/.mvn/
+**/gradle/
+
+# Java
+*.class
+
+# Logs
+*.log
+logs/
+
+# Local runtime / generated data
+data/
+videos/
+*.pid
+
+# Tool build artifacts
+tools/*.class
+tools/*$*.class
+
+# Local memory / agent runtime
+.agentmemory/

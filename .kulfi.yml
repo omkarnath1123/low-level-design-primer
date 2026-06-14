@@ -25,3 +25,10 @@ sessions: SESSIONS.md
 
 clone:  java tools/CloneSolutions.java
 sync:   java tools/SyncSolutions.java
+
+memory:
+  bridge: java tools/AgentMemoryBridge.java
+  health: java tools/AgentMemoryBridge.java health
+  remember: java tools/AgentMemoryBridge.java remember "<content>" <concepts...>
+  search: java tools/AgentMemoryBridge.java search "<query>" 5
+  repo_remember: java tools/AgentMemoryBridge.java repo-remember "low-level-design-primer" "<decision>" <concepts...>
