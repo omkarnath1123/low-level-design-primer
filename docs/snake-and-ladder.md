@@ -1,9 +1,9 @@
-# Snake and Ladder Game
+# Snake And Ladder Game
 > Turn-based board game for N players on a 100-cell board with snakes and ladders.
 
 ---
 
-## Core Entities
+## Core entities
 
 | Class | Role |
 |---|---|
@@ -29,7 +29,7 @@ Game
 
 ---
 
-## Design Patterns
+## Design patterns
 
 | Pattern | Where |
 |---|---|
@@ -38,7 +38,7 @@ Game
 
 ---
 
-## Key Flow — One Turn
+## Key flow — one turn
 
 ```
 1. Player rolls Dice → value (1–6)
@@ -54,7 +54,7 @@ Game
 
 ---
 
-## Rules Encoded
-- Exact roll to 100 required to win (overshoot = no move)
-- Snakes always go down, ladders always go up
-- Multiple dice: sum of rolls used
+## Rules encoded
+* Exact roll to 100 required to win (overshoot = no move)
+* Snakes always go down, ladders always go up
+* Multiple dice: sum of rolls used

@@ -1,4 +1,4 @@
-## Problem Statement
+## Problem statement
 We have to do low level design for a Cache system. Cache that we will design will have to support following operations:
 * **Put**: This will allow user to put a value against a key in the cache.
 * **Get**: This will allow user to get the previously saved value using key.

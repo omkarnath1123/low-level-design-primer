@@ -3,7 +3,7 @@
 
 ---
 
-## Core Interfaces
+## Core interfaces
 
 | Interface | Methods | Purpose |
 |---|---|---|
@@ -23,7 +23,7 @@
 
 ---
 
-## Dependency Injection (Guice)
+## Dependency injection (Guice)
 
 | Module | Binds |
 |---|---|
@@ -51,7 +51,7 @@ Main / TaskManager
 
 ---
 
-## Design Patterns
+## Design patterns
 
 | Pattern | Where |
 |---|---|
@@ -62,7 +62,7 @@ Main / TaskManager
 
 ---
 
-## Key Flow — Log a Timed Task
+## Key flow — log a timed task
 
 ```java
 LogClient client = injector.getInstance(LogClient.class);
@@ -75,6 +75,6 @@ client.log("Task completed in " + timer.elapsed() + "ms");
 
 ---
 
-## Log Levels (conventional)
+## Log levels (conventional)
 `DEBUG < INFO < WARN < ERROR`  
 Level filtering: only logs at or above configured level are written.

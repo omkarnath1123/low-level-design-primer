@@ -1,9 +1,9 @@
-# Distributed ID Generation — Twitter Snowflake
+# Distributed Id Generation — Twitter Snowflake
 > Generate globally unique, sortable 64-bit IDs across multiple nodes without coordination.
 
 ---
 
-## The Snowflake ID Structure
+## The Snowflake ID structure
 
 ```
  63        22        12         0
@@ -23,7 +23,7 @@
 
 ---
 
-## Core Entities
+## Core entities
 
 | Class/Interface | Role |
 |---|---|
@@ -50,7 +50,7 @@ SequenceIdGenerator  (interface)
 
 ---
 
-## Design Patterns
+## Design patterns
 
 | Pattern | Where |
 |---|---|
@@ -60,7 +60,7 @@ SequenceIdGenerator  (interface)
 
 ---
 
-## Key Flow — Generate One Snowflake ID
+## Key flow — generate one Snowflake ID
 
 ```
 synchronized(lock):
@@ -77,9 +77,9 @@ synchronized(lock):
 
 ---
 
-## Guarantees & Constraints
+## Guarantees & constraints
 - **Monotonically increasing** — sortable by creation time
 - **No coordination** — nodes generate IDs independently
 - **Clock drift protection** — throws `ClockMovedBackException` on backwards clock
 - **Node ID bounds** — validated at startup via `@PostConstruct`
-- Thread-safe via `synchronized(lock)` block
+* Thread-safe via `synchronized(lock)` block

@@ -3,7 +3,7 @@
 
 ---
 
-## Core Entities
+## Core entities
 
 | Class | Role |
 |---|---|
@@ -16,7 +16,7 @@
 
 ---
 
-## Key Services
+## Key services
 
 | Service | Responsibility |
 |---|---|
@@ -43,7 +43,7 @@ Expense
 
 ---
 
-## Design Patterns
+## Design patterns
 
 | Pattern | Where |
 |---|---|
@@ -54,7 +54,7 @@ Expense
 
 ---
 
-## Key Flow — Create and Settle an Expense
+## Key flow — create and settle an expense
 
 ```
 1. ExpenseService.createExpense(title, amount, creatorId)

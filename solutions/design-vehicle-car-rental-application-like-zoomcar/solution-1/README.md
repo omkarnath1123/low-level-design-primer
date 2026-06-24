@@ -1,4 +1,4 @@
-# Vehicle Rental application 
+# Vehicle Rental Application
 
 Using OO principles to design a cab rental application - I am going to use Java
 
@@ -11,7 +11,7 @@ Users should be able to create an account for them to book vehicles of the below
  6. VAN
  7. MOTORCYCLE
  8. BICYCLE
- 
+
 Admin should be able to add vehicle to inventory.  
 Users should be able to book an available vehicle.  
 Users should be able to scan qrCode of the vehicle and book (walkin booking).  
@@ -23,4 +23,4 @@ Users Should get remainder notification a day before their booking.
 Users should be able to choose and add devices and services to the vehicles while they book.  
 
 System should be provide APIs to search for vechicles booked by users by user id and for a particular interval. 
- 
+

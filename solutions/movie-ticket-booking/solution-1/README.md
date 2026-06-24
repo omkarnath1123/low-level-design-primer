@@ -1,15 +1,15 @@
-# Low Level System Design - Ticket Booking Application Like BookMyShow, TicketMaster, etc. 
+# Low Level System Design - Ticket Booking Application Like Bookmyshow, Ticketmaster, Etc.
 
-### Problem Statement
+### Problem statement
 [Check here](problem-statement.md)
 
-### Connect with me and my offerings:
+### Connect with me and my offerings
 https://enginebogie.com/u/anomaly2104
 
-### Video Explanation
+### Video explanation
 [https://www.youtube.com/playlist?list=PL564gOx0bCLpAL7yMJqOuK3_hBuLkyRhn](https://www.youtube.com/playlist?list=PL564gOx0bCLpAL7yMJqOuK3_hBuLkyRhn)
 
-### Further Improvements
+### Further improvements
 * Seat type: Silver, Gold, Diamond
     * Different pricing for different types of seats.
 * Validating payment in payment success flow. 

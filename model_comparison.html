@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM Comparison — Coding · General · Research</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .chart-box { position: relative; height: 380px; width: 100%; }
+  th, td { white-space: nowrap; }
+  .sticky-col { position: sticky; left: 0; background: inherit; z-index: 2; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+<header class="bg-slate-900 text-white">
+  <div class="max-w-7xl mx-auto px-6 py-8">
+    <h1 class="text-3xl font-bold tracking-tight"> LLM Showdown</h1>
+    <p class="mt-2 text-slate-300 max-w-3xl">
+      Side-by-side comparison of 15 models across <strong>coding</strong>, <strong>general use</strong>,
+      and <strong>research / deep reasoning</strong>. Filter, sort, and eyeball the charts to pick your fighter.
+    </p>
+  </div>
+</header>
+
+<!-- HONESTY BANNER -->
+<div class="bg-amber-100 border-y-2 border-amber-400 text-amber-900">
+  <div class="max-w-7xl mx-auto px-6 py-4 text-sm">
+    <strong> Read me first — data honesty:</strong>
+    These exact model versions are <strong>not officially verifiable</strong> in my knowledge base.
+    Every score below is an <strong>informed estimate ()</strong> based on naming tiers, family trajectories,
+    and how vendors usually position "nano / mini / flash / sonnet / opus / pro / codex" variants.
+    Use this for <em>relative shape and shortlisting</em>, not for quoting precise numbers. Always confirm
+    against the vendor's live model card before committing budget.
+  </div>
+</div>
+
+<main class="max-w-7xl mx-auto px-6 py-8 space-y-12">
+
+  <!-- CONTROLS -->
+  <section>
+    <div class="flex flex-wrap gap-3 items-center">
+      <label class="text-sm font-medium">Highlight use-case:</label>
+      <button data-uc="coding"   class="uc-btn px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium">Coding</button>
+      <button data-uc="general"  class="uc-btn px-4 py-2 rounded-lg bg-white border border-slate-300 text-sm font-medium">General</button>
+      <button data-uc="research" class="uc-btn px-4 py-2 rounded-lg bg-white border border-slate-300 text-sm font-medium">Research</button>
+      <button data-uc="value"    class="uc-btn px-4 py-2 rounded-lg bg-white border border-slate-300 text-sm font-medium">Value (cost/speed)</button>
+    </div>
+    <p class="mt-2 text-xs text-slate-500">Charts and the ranked list below update to the selected dimension.</p>
+  </section>
+
+  <!-- CHARTS -->
+  <section class="grid lg:grid-cols-2 gap-8">
+    <div class="bg-white rounded-xl shadow p-5">
+      <h2 class="font-semibold mb-3">Ranked by selected use-case <span class="text-xs text-slate-400">(0–100, estimated )</span></h2>
+      <div class="chart-box"><canvas id="barChart"></canvas></div>
+    </div>
+    <div class="bg-white rounded-xl shadow p-5">
+      <h2 class="font-semibold mb-3">Radar — top 6 all-rounders <span class="text-xs text-slate-400">(estimated )</span></h2>
+      <div class="chart-box"><canvas id="radarChart"></canvas></div>
+    </div>
+  </section>
+
+  <!-- TABLE -->
+  <section class="bg-white rounded-xl shadow overflow-hidden">
+    <h2 class="font-semibold px-5 pt-5">Full comparison table <span class="text-xs text-slate-400">— all scores estimated </span></h2>
+    <div class="overflow-x-auto mt-3">
+      <table class="w-full text-sm">
+        <thead class="bg-slate-100 text-slate-600 text-left">
+          <tr>
+            <th class="sticky-col bg-slate-100 px-4 py-3">Model</th>
+            <th class="px-4 py-3">Family / Tier</th>
+            <th class="px-4 py-3 text-center">Coding</th>
+            <th class="px-4 py-3 text-center">General</th>
+            <th class="px-4 py-3 text-center">Research</th>
+            <th class="px-4 py-3 text-center">Speed</th>
+            <th class="px-4 py-3 text-center">Cost-eff.</th>
+            <th class="px-4 py-3 text-center">Context*</th>
+            <th class="px-4 py-3">Best for</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+    <p class="text-xs text-slate-500 px-5 py-3">
+      *Context = relative long-context handling, not exact token counts. Higher = better. "Cost-eff." = quality-per-dollar (nano/mini/flash/haiku win here).
+    </p>
+  </section>
+
+  <!-- RECOMMENDATIONS -->
+  <section class="grid md:grid-cols-3 gap-6">
+    <div class="bg-white rounded-xl shadow p-5 border-t-4 border-indigo-500">
+      <h3 class="font-bold text-lg"> For Coding</h3>
+      <p class="text-sm mt-2 text-slate-600">Pick a <strong>codex / opus / top-sonnet</strong> tier. They lead on agentic tool-use, refactors, and big-repo reasoning.</p>
+      <ol class="mt-3 text-sm list-decimal list-inside space-y-1">
+        <li><strong>gpt-5.3-codex</strong> — purpose-built for code </li>
+        <li><strong>claude-4-8-opus / -long</strong> — long-context repos </li>
+        <li><strong>claude-4-5-sonnet</strong> — best speed/quality balance </li>
+      </ol>
+    </div>
+    <div class="bg-white rounded-xl shadow p-5 border-t-4 border-emerald-500">
+      <h3 class="font-bold text-lg"> For General Use</h3>
+      <p class="text-sm mt-2 text-slate-600">Flagship chat tiers give the smoothest everyday experience; mid-tiers nail the cost/quality sweet spot.</p>
+      <ol class="mt-3 text-sm list-decimal list-inside space-y-1">
+        <li><strong>gpt-5.5 / gpt-5.4</strong> — top all-rounders </li>
+        <li><strong>claude-4-5-sonnet</strong> — great writing + tone </li>
+        <li><strong>gemini-3.5-flash</strong> — fast + cheap daily driver </li>
+      </ol>
+    </div>
+    <div class="bg-white rounded-xl shadow p-5 border-t-4 border-purple-500">
+      <h3 class="font-bold text-lg"> For Research</h3>
+      <p class="text-sm mt-2 text-slate-600">Go for the deepest-reasoning, longest-context flagships. Depth &gt; speed here.</p>
+      <ol class="mt-3 text-sm list-decimal list-inside space-y-1">
+        <li><strong>claude-4-8-opus-long</strong> — depth + huge context </li>
+        <li><strong>gpt-5.5</strong> — strongest reasoning </li>
+        <li><strong>gemini-3.1-pro-preview</strong> — multimodal + long docs </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- VALUE NOTE -->
+  <section class="bg-slate-900 text-slate-200 rounded-xl p-6">
+    <h3 class="font-bold text-lg text-white"> The "don't overpay" note</h3>
+    <p class="text-sm mt-2 max-w-3xl">
+      Flagships (opus / gpt-5.5 / pro) are overkill for 80% of tasks. For high-volume, latency-sensitive,
+      or batch work, the <strong>nano / mini / flash / haiku</strong> tiers usually give you ~85–90% of the quality
+      at a fraction of the cost. Smart move: <strong>route cheap models by default, escalate to flagships only when the task needs it.</strong>
+    </p>
+  </section>
+
+  <footer class="text-center text-xs text-slate-400 pb-8">
+    Built by Kulfi  · All scores are estimates () for relative comparison only · Verify against vendor model cards.
+  </footer>
+</main>
+
+<script>
+// ---- DATA (all estimated , 0-100 relative scale) ----
+const models = [
+  { name:"gpt-5.5",                 fam:"OpenAI · Flagship",   coding:95, general:97, research:96, speed:62, value:55, context:93, best:"Top general + research flagship" },
+  { name:"gpt-5.4",                 fam:"OpenAI · Flagship",   coding:93, general:94, research:93, speed:66, value:60, context:91, best:"Balanced flagship workhorse" },
+  { name:"gpt-5.3-codex",          fam:"OpenAI · Code",       coding:97, general:84, research:85, speed:70, value:64, context:92, best:"Pure coding / agentic dev" },
+  { name:"gpt-5.4-mini",           fam:"OpenAI · Mid",        coding:86, general:88, research:84, speed:85, value:86, context:80, best:"Cost/quality sweet spot" },
+  { name:"gpt-5.4-nano",           fam:"OpenAI · Light",      coding:76, general:80, research:72, speed:96, value:96, context:70, best:"High-volume, cheap, fast" },
+  { name:"claude-4-8-opus-long",   fam:"Anthropic · Flagship+",coding:95, general:95, research:98, speed:50, value:48, context:99, best:"Deep research + huge context" },
+  { name:"claude-4-8-opus",        fam:"Anthropic · Flagship",coding:96, general:95, research:96, speed:55, value:52, context:95, best:"Top coding + reasoning" },
+  { name:"claude-4-7-opus",        fam:"Anthropic · Flagship",coding:94, general:93, research:94, speed:57, value:54, context:93, best:"Prev-gen heavy reasoning" },
+  { name:"claude-4-6-opus",        fam:"Anthropic · Flagship",coding:92, general:91, research:92, speed:58, value:56, context:91, best:"Solid older flagship" },
+  { name:"claude-4-5-opus",        fam:"Anthropic · Flagship",coding:90, general:90, research:90, speed:60, value:58, context:90, best:"Reliable reasoning" },
+  { name:"claude-4-6-sonnet",      fam:"Anthropic · Mid",     coding:91, general:91, research:88, speed:80, value:80, context:85, best:"Fast, strong coder" },
+  { name:"claude-4-5-sonnet",      fam:"Anthropic · Mid",     coding:90, general:90, research:87, speed:82, value:82, context:84, best:"Best speed/quality balance" },
+  { name:"claude-4-5-haiku",       fam:"Anthropic · Light",   coding:78, general:82, research:74, speed:95, value:94, context:72, best:"Cheap, snappy assistant" },
+  { name:"gemini-3.5-flash",       fam:"Google · Fast",       coding:84, general:88, research:82, speed:94, value:92, context:88, best:"Fast cheap multimodal daily driver" },
+  { name:"gemini-3.1-pro-preview", fam:"Google · Flagship",   coding:90, general:92, research:93, speed:68, value:64, context:96, best:"Long docs + multimodal research" },
+];
+
+const ucLabels = { coding:"Coding", general:"General", research:"Research", value:"Value (cost/speed)" };
+let currentUC = "coding";
+
+// helper: value score blends speed + value
+function scoreFor(m, uc){ return uc === "value" ? Math.round((m.speed + m.value)/2) : m[uc]; }
+
+// ---- TABLE ----
+function renderTable(){
+  const body = document.getElementById("tableBody");
+  body.innerHTML = models.map(m => `
+    <tr class="border-t border-slate-100 hover:bg-slate-50 even:bg-slate-50/40">
+      <td class="sticky-col bg-white px-4 py-3 font-semibold">${m.name}</td>
+      <td class="px-4 py-3 text-slate-500">${m.fam}</td>
+      ${cell(m.coding)}${cell(m.general)}${cell(m.research)}${cell(m.speed)}${cell(m.value)}${cell(m.context)}
+      <td class="px-4 py-3 text-slate-600">${m.best}</td>
+    </tr>`).join("");
+}
+function cell(v){
+  const c = v>=92 ? "bg-emerald-100 text-emerald-800" : v>=82 ? "bg-lime-100 text-lime-800"
+          : v>=72 ? "bg-amber-100 text-amber-800" : "bg-rose-100 text-rose-800";
+  return `<td class="px-4 py-3 text-center"><span class="inline-block w-9 rounded ${c} font-medium">${v}</span></td>`;
+}
+
+// ---- BAR CHART ----
+let barChart, radarChart;
+function renderBar(){
+  const sorted = [...models].sort((a,b)=>scoreFor(b,currentUC)-scoreFor(a,currentUC));
+  const ctx = document.getElementById("barChart");
+  if(barChart) barChart.destroy();
+  barChart = new Chart(ctx, {
+    type:"bar",
+    data:{ labels: sorted.map(m=>m.name),
+      datasets:[{ label: ucLabels[currentUC], data: sorted.map(m=>scoreFor(m,currentUC)),
+        backgroundColor:"#6366f1", borderRadius:4 }]},
+    options:{ indexAxis:"y", responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false} },
+      scales:{ x:{ min:0, max:100, grid:{color:"#eef"} }, y:{ ticks:{font:{size:10}} } } }
+  });
+}
+
+// ---- RADAR (top 6 by general all-round avg) ----
+function renderRadar(){
+  const ranked = [...models].sort((a,b)=>
+    ((b.coding+b.general+b.research)/3) - ((a.coding+a.general+a.research)/3)).slice(0,6);
+  const palette = ["#6366f1","#10b981","#f59e0b","#ef4444","#8b5cf6","#06b6d4"];
+  const ctx = document.getElementById("radarChart");
+  if(radarChart) radarChart.destroy();
+  radarChart = new Chart(ctx, {
+    type:"radar",
+    data:{ labels:["Coding","General","Research","Speed","Cost-eff.","Context"],
+      datasets: ranked.map((m,i)=>({ label:m.name,
+        data:[m.coding,m.general,m.research,m.speed,m.value,m.context],
+        borderColor:palette[i], backgroundColor:palette[i]+"22", borderWidth:2 })) },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ position:"bottom", labels:{font:{size:10}, boxWidth:12} } },
+      scales:{ r:{ min:0, max:100, ticks:{display:false} } } }
+  });
+}
+
+// ---- UC BUTTONS ----
+document.querySelectorAll(".uc-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    currentUC = btn.dataset.uc;
+    document.querySelectorAll(".uc-btn").forEach(b=>{
+      b.className = "uc-btn px-4 py-2 rounded-lg bg-white border border-slate-300 text-sm font-medium";
+    });
+    btn.className = "uc-btn px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium";
+    renderBar();
+  });
+});
+
+renderTable(); renderBar(); renderRadar();
+</script>
+</body>
+</html>

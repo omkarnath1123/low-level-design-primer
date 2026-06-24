@@ -3,7 +3,7 @@
 
 ---
 
-## Core Entities
+## Core entities
 
 | Class | Role |
 |---|---|
@@ -14,7 +14,7 @@
 | `VehicleInventory` | Vehicle availability state |
 | `VehicleLog` | Audit log of vehicle events |
 
-### Vehicle Hierarchy
+### Vehicle hierarchy
 
 ```
 HireableVehicle (abstract)
@@ -23,7 +23,7 @@ HireableVehicle (abstract)
  └── Van
 ```
 
-### Account Hierarchy
+### Account hierarchy
 
 ```
 Account (abstract)
@@ -32,7 +32,7 @@ Account (abstract)
  └── Admin   (fleet manager)
 ```
 
-### Add-On Hierarchy (Strategy Pattern)
+### Add-on hierarchy (Strategy Pattern)
 
 ```
 AddonService (abstract/interface)
@@ -49,7 +49,7 @@ AddonService (abstract/interface)
 
 ---
 
-## Key Services & Interfaces
+## Key services & interfaces
 
 | Interface | Implementations | Purpose |
 |---|---|---|
@@ -85,7 +85,7 @@ AccountRepository (Factory)
 
 ---
 
-## Design Patterns
+## Design patterns
 
 | Pattern | Where |
 |---|---|
@@ -98,7 +98,7 @@ AccountRepository (Factory)
 
 ---
 
-## Key Flow — Make a Reservation
+## Key flow — make a reservation
 
 ```
 1. VehicleSearchService.search(location, dates, type) → available vehicles
@@ -114,7 +114,7 @@ AccountRepository (Factory)
 
 ---
 
-## Pricing Types
+## Pricing types
 
 | Type | Basis |
 |---|---|

@@ -1,9 +1,9 @@
-# TrueCaller — Caller ID & Spam Detection
+# Truecaller — Caller Id & Spam Detection
 > Identify callers, manage contacts with search, block spam, and support business profiles.
 
 ---
 
-## Core Entities
+## Core entities
 
 | Class | Role |
 |---|---|
@@ -31,7 +31,7 @@
 
 ---
 
-## Trie — Contact Search
+## Trie — contact search
 
 ```
 ContactTrie
@@ -70,7 +70,7 @@ GlobalSpam               (singleton/static)
 
 ---
 
-## Design Patterns
+## Design patterns
 
 | Pattern | Where |
 |---|---|
@@ -81,7 +81,7 @@ GlobalSpam               (singleton/static)
 
 ---
 
-## Key Flows
+## Key flows
 
 **Incoming Call Identification:**
 ```
@@ -101,7 +101,7 @@ GlobalSpam               (singleton/static)
 
 ---
 
-## Constraints / Rules
+## Constraints / rules
 - `Constant.MAX_CONTACTS` — cap on personal contacts per user
 - `Constant.MAX_BLOCK_LIMIT` — max numbers a user can block
-- Spam is crowd-sourced: any user can mark a number as spam → `GlobalSpam` incremented
+* Spam is crowd-sourced: any user can mark a number as spam → `GlobalSpam` incremented

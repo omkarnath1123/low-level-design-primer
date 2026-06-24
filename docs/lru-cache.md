@@ -1,9 +1,9 @@
-# LRU Cache System
+# Lru Cache System
 > Generic key-value cache with pluggable eviction policy and storage backend.
 
 ---
 
-## Core Entities
+## Core entities
 
 | Class | Role |
 |---|---|
@@ -15,7 +15,7 @@
 
 ---
 
-## Key Interfaces
+## Key interfaces
 
 | Interface | Methods | Purpose |
 |---|---|---|
@@ -36,7 +36,7 @@ Cache
 
 ---
 
-## Design Patterns
+## Design patterns
 
 | Pattern | Where |
 |---|---|
@@ -47,7 +47,7 @@ Cache
 
 ---
 
-## LRU Mechanics
+## Lru mechanics
 
 ```
 keyAccessed(key):
@@ -59,13 +59,13 @@ evictKey():
 ```
 
 **Why DLL + HashMap?**
-- DLL → O(1) arbitrary node removal (with prev/next pointers)
-- HashMap → O(1) node lookup by key
-- Together → O(1) access and eviction
+* DLL → O(1) arbitrary node removal (with prev/next pointers)
+* HashMap → O(1) node lookup by key
+* Together → O(1) access and eviction
 
 ---
 
-## Key Flow — Cache Put
+## Key flow — cache put
 
 ```
 1. storage.add(key, value)

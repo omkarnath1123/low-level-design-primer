@@ -2,7 +2,7 @@
 
 What is amazon locker?  
 When a customer orders items with amazon they may choose to deliver it to locker which customer can pick it up on the way to their home.
-  
+
 Customers can also return items to lockers which can be picked up pickup team than pickup form home geoLocation.  
 
 Locker Sizes  

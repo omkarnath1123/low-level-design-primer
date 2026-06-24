@@ -3,7 +3,7 @@
 
 ---
 
-## Core Entities
+## Core entities
 
 | Class | Role |
 |---|---|
@@ -20,7 +20,7 @@
 
 ---
 
-## Summary Aggregation
+## Summary aggregation
 
 | Class | Role |
 |---|---|
@@ -78,7 +78,7 @@ ReviewSummary
 
 ---
 
-## Design Patterns
+## Design patterns
 
 | Pattern | Where |
 |---|---|
@@ -89,7 +89,7 @@ ReviewSummary
 
 ---
 
-## Key Flows
+## Key flows
 
 **Submit a Review:**
 ```

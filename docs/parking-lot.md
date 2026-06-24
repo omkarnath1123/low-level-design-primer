@@ -4,7 +4,7 @@ Two solutions exist — a simpler sketch and a full production model.
 
 ---
 
-## Solution 1 — Lightweight Sketch
+## Solution 1 — lightweight sketch
 
 **Entities:** `Vehicle` (abstract) → `Car`, `MotorBike`, `Van`, `Truck`, `ElectricCar`, `ElectricMotorBike`  
 **Enums:** `VehicleType`, `PaymentStatus`, `TicketStatus`  
@@ -14,9 +14,9 @@ Two solutions exist — a simpler sketch and a full production model.
 
 ---
 
-## Solution 2 — Full Model
+## Solution 2 — full model
 
-### Core Entities
+### Core entities
 
 | Class | Role |
 |---|---|
@@ -29,7 +29,7 @@ Two solutions exist — a simpler sketch and a full production model.
 | `EntrancePanel` | Entry point — issues tickets |
 | `ExitPanel` | Exit point — processes payment |
 
-### Vehicle Hierarchy
+### Vehicle hierarchy
 
 ```
 Vehicle (abstract)
@@ -41,7 +41,7 @@ Vehicle (abstract)
  └── ElectricMotorBike (needs charging spot)
 ```
 
-### Parking Spot Hierarchy
+### Parking spot hierarchy
 
 ```
 ParkingSpot (abstract)
@@ -53,7 +53,7 @@ ParkingSpot (abstract)
  └── LargeVehicleParkingSpot
 ```
 
-### Account Hierarchy
+### Account hierarchy
 
 ```
 Account (abstract)
@@ -88,7 +88,7 @@ Payment
 
 ---
 
-## Design Patterns
+## Design patterns
 
 | Pattern | Where |
 |---|---|
@@ -99,7 +99,7 @@ Payment
 
 ---
 
-## Key Flow — Park a Vehicle
+## Key flow — park a vehicle
 
 ```
 1. Vehicle arrives at EntrancePanel
@@ -115,4 +115,4 @@ Payment
 
 ## Pricing
 - `HourlyCost` — fee calculated from `entryTime` to `exitTime`
-- Different rates possible per `ParkingSpotType`
+* Different rates possible per `ParkingSpotType`

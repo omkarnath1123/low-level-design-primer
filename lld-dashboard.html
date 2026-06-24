@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low-Level Design (LLD) Master Dashboard</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Inter & JetBrains Mono) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Mermaid.js for Diagrams (pinned) -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'neutral',
+            securityLevel: 'loose',
+            flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
+        });
+        window.mermaid = mermaid;
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        code, pre {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Header Banner -->
+    <header class="bg-[#0071CE] text-white py-8 px-6 shadow-md border-b-4 border-[#FFC220]">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <div class="flex items-center gap-3">
+                    <span class="bg-[#FFC220] text-[#041F41] font-bold text-xs px-2.5 py-1 rounded-full uppercase tracking-wider">AlgoMaster LLD Portal</span>
+                    <span class="text-white/80 text-sm">Interactive Study Guide</span>
+                </div>
+                <h1 class="text-3xl font-extrabold tracking-tight mt-2 flex items-center gap-3">
+                    <i class="fa-solid alt fa-cubes-stacked text-[#FFC220]"></i> Low-Level Design (LLD) Dashboard
+                </h1>
+                <p class="text-white/90 text-sm mt-1 max-w-2xl">
+                    Master SOLID principles, structural design patterns, object-oriented principles, UML, and machine coding problems in one premium interactive portal.
+                </p>
+            </div>
+            <div class="flex gap-2">
+                <a href="model_comparison.html" class="bg-[#FFC220] hover:bg-amber-300 transition-all text-[#041F41] px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2">
+                    <i class="fa-solid fa-robot"></i> LLM Comparison
+                </a>
+                <button onclick="window.print()" class="bg-white/10 hover:bg-white/20 transition-all text-white px-4 py-2 rounded-lg text-sm font-medium border border-white/20 flex items-center gap-2">
+                    <i class="fa-solid fa-print"></i> Export / Print Guide
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+        
+        <!-- Navigation Tabs & Search Row -->
+        <div class="flex flex-col lg:flex-row gap-4 justify-between items-stretch lg:items-center mb-8 bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+            <!-- Tabs -->
+            <nav class="flex flex-wrap gap-2" aria-label="Tabs">
+                <button onclick="switchTab('solid')" id="tab-solid" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150 bg-[#0071CE] text-white shadow-sm flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved"></i> SOLID Principles
+                </button>
+                <button onclick="switchTab('creational')" id="tab-creational" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150 text-slate-600 hover:bg-slate-50 flex items-center gap-2">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Creational Patterns
+                </button>
+                <button onclick="switchTab('structural')" id="tab-structural" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150 text-slate-600 hover:bg-slate-50 flex items-center gap-2">
+                    <i class="fa-solid fa-puzzle-piece"></i> Structural Patterns
+                </button>
+                <button onclick="switchTab('behavioral')" id="tab-behavioral" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150 text-slate-600 hover:bg-slate-50 flex items-center gap-2">
+                    <i class="fa-solid fa-gears"></i> Behavioral Patterns
+                </button>
+                <button onclick="switchTab('case-studies')" id="tab-case-studies" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150 text-slate-600 hover:bg-slate-50 flex items-center gap-2">
+                    <i class="fa-solid fa-laptop-code"></i> Case Studies
+                </button>
+                <button onclick="switchTab('question-bank')" id="tab-question-bank" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150 text-slate-600 hover:bg-slate-50 flex items-center gap-2">
+                    <i class="fa-solid fa-list-check"></i> Question Bank
+                </button>
+                <button onclick="switchTab('resources')" id="tab-resources" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150 text-slate-600 hover:bg-slate-50 flex items-center gap-2">
+                    <i class="fa-solid fa-book"></i> Resources
+                </button>
+            </nav>
+
+            <!-- Search Bar -->
+            <div class="relative min-w-[280px]">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input type="text" id="dashboard-search" oninput="filterDashboard()" placeholder="Search patterns, case studies..." class="w-full pl-10 pr-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0071CE] focus:border-transparent text-sm">
+            </div>
+        </div>
+
+        <!-- ==================== TAB: SOLID PRINCIPLES ==================== -->
+        <div id="content-solid" class="tab-content block space-y-8 animate-fade-in">
+            <!-- Summary Introduction -->
+            <div class="bg-gradient-to-r from-[#041F41] to-[#0071CE] rounded-2xl p-6 text-white shadow-md">
+                <div class="flex items-center gap-3 mb-2">
+                    <i class="fa-solid fa-shield-halved text-[#FFC220] text-2xl"></i>
+                    <h2 class="text-xl font-bold">Understanding SOLID Design Principles</h2>
+                </div>
+                <p class="text-white/80 text-sm max-w-4xl">
+                    Coined by Robert C. Martin (Uncle Bob), SOLID is an acronym representing five fundamental design principles that ensure system structures are understandable, flexible, and maintainable over time.
+                </p>
+            </div>
+
+            <!-- Five Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- S -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow p-6 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-blue-50 rounded-bl-full flex justify-center items-center">
+                        <span class="text-xl font-black text-[#0071CE]/20">S</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Single Responsibility Principle (SRP)</h3>
+                    <p class="text-xs text-slate-500 mb-4 font-semibold uppercase tracking-wider">"A class should have only one reason to change"</p>
+                    <p class="text-sm text-slate-600 mb-4">
+                        A class must focus on a single job, responsibility, or business logic sector. Mixing email dispatch, db transactions, and report formatting inside a single module violates SRP.
+                    </p>
+                    <div class="bg-slate-50 rounded-lg p-3 border border-slate-100 text-xs">
+                        <p class="font-semibold text-[#0071CE] mb-1">Common Fix:</p>
+                        Extract logging, database management, and formatting into separate helper/service classes.
+                    </div>
+                </div>
+
+                <!-- O -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow p-6 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-yellow-50 rounded-bl-full flex justify-center items-center">
+                        <span class="text-xl font-black text-amber-500/20">O</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Open/Closed Principle (OCP)</h3>
+                    <p class="text-xs text-slate-500 mb-4 font-semibold uppercase tracking-wider">"Software entities should be open for extension, but closed for modification"</p>
+                    <p class="text-sm text-slate-600 mb-4">
+                        You should be able to extend class behavior without modifying its existing code base, which prevents regression bugs in previously tested logic.
+                    </p>
+                    <div class="bg-slate-50 rounded-lg p-3 border border-slate-100 text-xs">
+                        <p class="font-semibold text-amber-600 mb-1">Common Fix:</p>
+                        Introduce interfaces or abstract classes, then implement strategies (e.g., polymorphism) for new behaviors.
+                    </div>
+                </div>
+
+                <!-- L -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow p-6 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-green-50 rounded-bl-full flex justify-center items-center">
+                        <span class="text-xl font-black text-green-500/20">L</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Liskov Substitution Principle (LSP)</h3>
+                    <p class="text-xs text-slate-500 mb-4 font-semibold uppercase tracking-wider">"Derived classes must be substitutable for their base classes"</p>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Subclasses should extend the behavior of base classes without changing or breaking their original expectations. Throwing `UnsupportedOperationException` in a subclass violates LSP.
+                    </p>
+                    <div class="bg-slate-50 rounded-lg p-3 border border-slate-100 text-xs">
+                        <p class="font-semibold text-green-600 mb-1">Common Fix:</p>
+                        Do not force-inherit. Create more focused interface partitions or use composition over inheritance.
+                    </div>
+                </div>
+
+                <!-- I -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow p-6 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-purple-50 rounded-bl-full flex justify-center items-center">
+                        <span class="text-xl font-black text-purple-500/20">I</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Interface Segregation Principle (ISP)</h3>
+                    <p class="text-xs text-slate-500 mb-4 font-semibold uppercase tracking-wider">"Clients should not be forced to depend on methods they do not use"</p>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Many client-specific interfaces are better than one general-purpose interface. Don't force implementing classes to define dummy behavior for unneeded methods.
+                    </p>
+                    <div class="bg-slate-50 rounded-lg p-3 border border-slate-100 text-xs">
+                        <p class="font-semibold text-purple-600 mb-1">Common Fix:</p>
+                        Break a bloated multi-method interface into several smaller, highly cohesive interfaces.
+                    </div>
+                </div>
+
+                <!-- D -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow p-6 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-rose-50 rounded-bl-full flex justify-center items-center">
+                        <span class="text-xl font-black text-rose-500/20">D</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Dependency Inversion Principle (DIP)</h3>
+                    <p class="text-xs text-slate-500 mb-4 font-semibold uppercase tracking-wider">"Depend on abstractions, not concretions"</p>
+                    <p class="text-sm text-slate-600 mb-4">
+                        High-level modules should not depend on low-level modules. Both should depend on abstractions (interfaces). Changes in deep helper details should not break core system orchestration.
+                    </p>
+                    <div class="bg-slate-50 rounded-lg p-3 border border-slate-100 text-xs">
+                        <p class="font-semibold text-rose-600 mb-1">Common Fix:</p>
+                        Use Dependency Injection (DI) frameworks or parameterize constructors with interface specifications.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beautiful Mermaid Diagram representing DIP / LSP -->
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                <h3 class="font-bold text-lg text-slate-900 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-diagram-project text-[#0071CE]"></i> SOLID Architecture Visualizer (OCP / DIP)
+                </h3>
+                <div class="mermaid flex justify-center bg-slate-50 p-4 rounded-lg">
+classDiagram
+class PaymentProcessor {
+  +process(amount) void
+}
+class PaymentMethod {
+  &lt;&lt;interface&gt;&gt;
+  +pay(amount) void
+}
+class CreditCardPayment {
+  +pay(amount) void
+}
+class PaypalPayment {
+  +pay(amount) void
+}
+PaymentProcessor --&gt; PaymentMethod : depends on abstraction
+CreditCardPayment ..|&gt; PaymentMethod : implements
+PaypalPayment ..|&gt; PaymentMethod : implements
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== TAB: CREATIONAL PATTERNS ==================== -->
+        <div id="content-creational" class="tab-content hidden space-y-8 animate-fade-in">
+            <div class="bg-gradient-to-r from-indigo-900 to-indigo-700 rounded-2xl p-6 text-white shadow-md">
+                <div class="flex items-center gap-3 mb-2">
+                    <i class="fa-solid fa-wand-magic-sparkles text-amber-300 text-2xl"></i>
+                    <h2 class="text-xl font-bold">Creational Design Patterns</h2>
+                </div>
+                <p class="text-white/80 text-sm max-w-4xl">
+                    Creational patterns handle object creation mechanisms, optimizing how objects are instantiated. They encapsulate instantiation details, decoupling the system from concrete constructors.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Singleton -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2 py-0.5 rounded-full">Creational</span>
+                            <h3 class="font-bold text-xl text-slate-900">Singleton Pattern</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            Ensures a class has only one instance and provides a global access point to it. Commonly used for database connections, caching classes, thread pools, and global loggers.
+                        </p>
+                        <!-- Code block -->
+                        <div class="relative bg-slate-900 text-slate-100 rounded-lg p-4 mb-4 text-xs overflow-x-auto custom-scrollbar">
+                            <div class="absolute right-2 top-2">
+                                <button onclick="copyCode(this)" class="text-slate-400 hover:text-white transition-colors"><i class="fa-regular fa-copy"></i></button>
+                            </div>
+                            <pre><code class="language-java">public class DatabaseConnection {
+    private static volatile DatabaseConnection instance;
+    private DatabaseConnection() {} // Private Constructor
+
+    public static DatabaseConnection getInstance() {
+        if (instance == null) {
+            synchronized (DatabaseConnection.class) {
+                if (instance == null) {
+                    instance = new DatabaseConnection();
+                }
+            }
+        }
+        return instance;
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Factory Method -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2 py-0.5 rounded-full">Creational</span>
+                            <h3 class="font-bold text-xl text-slate-900">Factory Method Pattern</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            Defines an interface for creating objects, but lets subclasses decide which class to instantiate. Decouples client callers from instantiation logic.
+                        </p>
+                        <div class="relative bg-slate-900 text-slate-100 rounded-lg p-4 mb-4 text-xs overflow-x-auto custom-scrollbar">
+                            <div class="absolute right-2 top-2">
+                                <button onclick="copyCode(this)" class="text-slate-400 hover:text-white transition-colors"><i class="fa-regular fa-copy"></i></button>
+                            </div>
+                            <pre><code class="language-java">public interface Notification {
+    void notifyUser();
+}
+public class NotificationFactory {
+    public Notification createNotification(String channel) {
+        if (channel.equalsIgnoreCase("SMS")) return new SMSNotification();
+        if (channel.equalsIgnoreCase("EMAIL")) return new EmailNotification();
+        throw new IllegalArgumentException("Unknown channel");
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== TAB: STRUCTURAL PATTERNS ==================== -->
+        <div id="content-structural" class="tab-content hidden space-y-8 animate-fade-in">
+            <div class="bg-gradient-to-r from-emerald-950 to-emerald-700 rounded-2xl p-6 text-white shadow-md">
+                <div class="flex items-center gap-3 mb-2">
+                    <i class="fa-solid fa-puzzle-piece text-emerald-300 text-2xl"></i>
+                    <h2 class="text-xl font-bold">Structural Design Patterns</h2>
+                </div>
+                <p class="text-white/80 text-sm max-w-4xl">
+                    Structural patterns explain how to assemble objects and classes into larger, flexible structures while keeping system boundaries highly modular and clean.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Adapter -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded-full">Structural</span>
+                        <h3 class="font-bold text-xl text-slate-900">Adapter Pattern</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Allows objects with incompatible interfaces to collaborate. Often used to translate vintage APIs or third-party components into expected interface structures.
+                    </p>
+                    <div class="relative bg-slate-900 text-slate-100 rounded-lg p-4 text-xs overflow-x-auto custom-scrollbar">
+                        <pre><code class="language-java">// Converts Legacy XML Stock Service to modern JSON Stock Parser
+public class XMLToJSONAdapter implements JSONStockData {
+    private LegacyXMLStockService xmlService;
+    
+    public XMLToJSONAdapter(LegacyXMLStockService xmlService) {
+        this.xmlService = xmlService;
+    }
+    
+    @Override
+    public JSONPayload getStockPayload() {
+        String xml = xmlService.getXMLData();
+        return convertXMLToJSON(xml);
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Decorator -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded-full">Structural</span>
+                        <h3 class="font-bold text-xl text-slate-900">Decorator Pattern</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Attaches new behaviors to objects dynamically by placing them inside special wrapper classes that contain the behaviors.
+                    </p>
+                    <div class="relative bg-slate-900 text-slate-100 rounded-lg p-4 text-xs overflow-x-auto custom-scrollbar">
+                        <pre><code class="language-java">// Wrap basic Coffee objects with dynamic toppings dynamically
+public class WhipDecorator extends CoffeeDecorator {
+    public WhipDecorator(Coffee coffee) {
+        super(coffee);
+    }
+    @Override
+    public double getCost() {
+        return super.getCost() + 0.50; // Extra cost of Whip
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Composite -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded-full">Structural</span>
+                        <h3 class="font-bold text-xl text-slate-900">Composite Pattern</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Composes objects into tree structures and lets clients treat individual objects and compositions uniformly. The <strong>Parking Lot</strong> (Lot &rarr; Floor &rarr; Spot) is a textbook composite.
+                    </p>
+                    <div class="relative bg-slate-900 text-slate-100 rounded-lg p-4 text-xs overflow-x-auto custom-scrollbar">
+                        <pre><code class="language-java">// Lot contains Floors; Floor contains Spots
+public class ParkingFloor {
+    private List&lt;ParkingSpot&gt; spots;
+    public ParkingSpot findAvailable(VehicleType t) {
+        return spots.stream()
+            .filter(s -&gt; s.isFree() &amp;&amp; s.fits(t))
+            .findFirst().orElse(null);
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Facade -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded-full">Structural</span>
+                        <h3 class="font-bold text-xl text-slate-900">Facade Pattern</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Provides a simplified, unified interface to a complex subsystem. The <strong>Cache</strong> facade hides the storage + eviction-policy wiring behind plain get/put.
+                    </p>
+                    <div class="relative bg-slate-900 text-slate-100 rounded-lg p-4 text-xs overflow-x-auto custom-scrollbar">
+                        <pre><code class="language-java">public class Cache&lt;K,V&gt; {           // facade
+    private final Storage&lt;K,V&gt; storage;
+    private final EvictionPolicy&lt;K&gt; policy;
+    public V get(K k) { ... }       // hides DLL + hashmap
+    public void put(K k, V v) { ... }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== TAB: BEHAVIORAL PATTERNS ==================== -->
+        <div id="content-behavioral" class="tab-content hidden space-y-8 animate-fade-in">
+            <div class="bg-gradient-to-r from-pink-950 to-pink-700 rounded-2xl p-6 text-white shadow-md">
+                <div class="flex items-center gap-3 mb-2">
+                    <i class="fa-solid fa-gears text-pink-300 text-2xl"></i>
+                    <h2 class="text-xl font-bold">Behavioral Design Patterns</h2>
+                </div>
+                <p class="text-white/80 text-sm max-w-4xl">
+                    Behavioral patterns focus on algorithms and the assignment of responsibilities between objects, defining clean communication networks and logical processing chains.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Strategy -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-pink-100 text-pink-800 text-xs font-bold px-2 py-0.5 rounded-full">Behavioral</span>
+                        <h3 class="font-bold text-xl text-slate-900">Strategy Pattern</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Defines a family of algorithms, encapsulates each one, and makes them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
+                    </p>
+                    <div class="relative bg-slate-900 text-slate-100 rounded-lg p-4 text-xs overflow-x-auto custom-scrollbar">
+                        <pre><code class="language-java">public interface EvictionStrategy {
+    void evict(Cache cache);
+}
+public class LRUEviction implements EvictionStrategy {
+    public void evict(Cache cache) {
+        // Evicts Least Recently Used element from the Cache
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Observer -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-pink-100 text-pink-800 text-xs font-bold px-2 py-0.5 rounded-full">Behavioral</span>
+                        <h3 class="font-bold text-xl text-slate-900">Observer Pattern</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Defines a subscription mechanism to notify multiple objects about any events that happen to the object they're observing.
+                    </p>
+                    <div class="relative bg-slate-900 text-slate-100 rounded-lg p-4 text-xs overflow-x-auto custom-scrollbar">
+                        <pre><code class="language-java">public interface Observer {
+    void update(String status);
+}
+public class DeliveryAgent implements Observer {
+    public void update(String status) {
+        System.out.println("Status updated to: " + status);
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- State -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-pink-100 text-pink-800 text-xs font-bold px-2 py-0.5 rounded-full">Behavioral</span>
+                        <h3 class="font-bold text-xl text-slate-900">State Pattern</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Lets an object alter its behavior when its internal state changes &mdash; it appears to change its class. Ideal for a <strong>Vending Machine</strong> (Idle &rarr; HasMoney &rarr; Dispensing) or a parking spot's occupancy lifecycle.
+                    </p>
+                    <div class="relative bg-slate-900 text-slate-100 rounded-lg p-4 text-xs overflow-x-auto custom-scrollbar">
+                        <pre><code class="language-java">public interface VendingState {
+    void insertCoin(VendingMachine m);
+    void dispense(VendingMachine m);
+}
+public class HasMoneyState implements VendingState {
+    public void dispense(VendingMachine m) {
+        m.releaseProduct();
+        m.setState(new IdleState());
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Command -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-pink-100 text-pink-800 text-xs font-bold px-2 py-0.5 rounded-full">Behavioral</span>
+                        <h3 class="font-bold text-xl text-slate-900">Command Pattern</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Encapsulates a request as an object, letting you parameterise, queue, and <strong>undo/redo</strong> operations. Powers a TextPad's multi-level undo and home-automation remote buttons.
+                    </p>
+                    <div class="relative bg-slate-900 text-slate-100 rounded-lg p-4 text-xs overflow-x-auto custom-scrollbar">
+                        <pre><code class="language-java">public interface Command {
+    void execute();
+    void undo();
+}
+public class InsertTextCommand implements Command {
+    public void execute() { doc.insert(text); }
+    public void undo()    { doc.delete(text); }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== TAB: CASE STUDIES ==================== -->
+        <div id="content-case-studies" class="tab-content hidden space-y-8 animate-fade-in">
+            <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-6 text-white shadow-md">
+                <div class="flex items-center gap-3 mb-2">
+                    <i class="fa-solid fa-laptop-code text-sky-400 text-2xl"></i>
+                    <h2 class="text-xl font-bold">Standard LLD Machine Coding Case Studies</h2>
+                </div>
+                <p class="text-white/80 text-sm max-w-4xl">
+                    Detailed structural templates for standard Machine Coding LLD questions encountered in top tech companies like Walmart, Amazon, Microsoft, and Uber.
+                </p>
+            </div>
+
+            <!-- Case Study Row -->
+            <div class="grid grid-cols-1 gap-8">
+                <!-- Parking Lot Case Study -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <div class="flex flex-col lg:flex-row justify-between gap-6 mb-6">
+                        <div class="max-w-2xl">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-0.5 rounded-full uppercase">Case Study 1</span>
+                            <h3 class="font-bold text-2xl text-slate-900 mt-2">Design a Multi-Level Parking Lot</h3>
+                            <p class="text-sm text-slate-600 mt-2">
+                                Design a parking lot system supporting multiple vehicle classes (Small, Compact, Large), custom parking slot configurations across levels, and modular pricing/payment calculation modules.
+                            </p>
+                            <ul class="text-xs text-slate-500 mt-4 space-y-1.5">
+                                <li><i class="fa-solid fa-check text-green-500"></i> Supports multiple levels with separate ticket entry/exit lanes.</li>
+                                <li><i class="fa-solid fa-check text-green-500"></i> Eviction / allocation utilizes customized SlotMatching strategy patterns.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-lg p-4 flex-1">
+                            <h4 class="font-bold text-xs text-slate-400 uppercase tracking-wider mb-2">Core Pattern Checklist</h4>
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded font-medium text-center"><i class="fa-solid fa-shapes"></i> Factory (Vehicle)</span>
+                                <span class="bg-pink-50 text-pink-700 px-2 py-1 rounded font-medium text-center"><i class="fa-solid fa-compass"></i> Strategy (Fees)</span>
+                                <span class="bg-emerald-50 text-emerald-700 px-2 py-1 rounded font-medium text-center"><i class="fa-solid fa-building-columns"></i> Singleton (Registry)</span>
+                                <span class="bg-amber-50 text-amber-700 px-2 py-1 rounded font-medium text-center"><i class="fa-solid fa-shield"></i> State (Occupancy)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mermaid Flowchart for Parking Lot -->
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                        <h4 class="font-bold text-sm text-slate-800 mb-3"><i class="fa-solid fa-circle-nodes"></i> Structural Model (UML Class relationships)</h4>
+                        <div class="mermaid flex justify-center p-2 bg-white rounded border border-slate-100">
+classDiagram
+class ParkingLot {
+  -List~Level~ levels
+  -PaymentManager paymentManager
+  +park(Vehicle v) Ticket
+  +unpark(Ticket t) void
+}
+class Level {
+  -String levelId
+  -List~ParkingSpot~ spots
+  +findAvailableSpot(VehicleType vt) ParkingSpot
+}
+class ParkingSpot {
+  -String spotId
+  -VehicleType type
+  -boolean isFree
+  +occupy(Vehicle v)
+  +vacate()
+}
+class Ticket {
+  -String ticketId
+  -ParkingSpot spot
+  -long entryTime
+}
+ParkingLot "1" *-- "many" Level
+Level "1" *-- "many" ParkingSpot
+ParkingLot ..&gt; Ticket : issues
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LRU Cache Case Study -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <div class="flex flex-col lg:flex-row justify-between gap-6 mb-6">
+                        <div class="max-w-2xl">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-0.5 rounded-full uppercase">Case Study 2</span>
+                            <h3 class="font-bold text-2xl text-slate-900 mt-2">Design an In-Memory LRU Cache</h3>
+                            <p class="text-sm text-slate-600 mt-2">A generic, bounded, thread-safe key-value cache with a <strong>pluggable eviction policy</strong> and <strong>swappable storage backend</strong>. Achieves O(1) get and O(1) eviction by pairing a doubly-linked list with a hashmap.</p>
+                            <ul class="text-xs text-slate-500 mt-4 space-y-1.5">
+                                <li><i class="fa-solid fa-check text-green-500"></i> DLL gives O(1) arbitrary node removal; HashMap gives O(1) lookup.</li>
+                                <li><i class="fa-solid fa-check text-green-500"></i> Swap LRU for LFU/FIFO without touching the Cache facade (Strategy).</li>
+                                <li><i class="fa-solid fa-check text-green-500"></i> put() evicts then retries on StorageFullException (Template Method).</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-lg p-4 flex-1">
+                            <h4 class="font-bold text-xs text-slate-400 uppercase tracking-wider mb-2">Core Pattern Checklist</h4>
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <span class="bg-pink-50 text-pink-700 px-2 py-1 rounded font-medium text-center"><i class="fa-solid fa-compass"></i> Strategy (Eviction)</span>
+                                <span class="bg-emerald-50 text-emerald-700 px-2 py-1 rounded font-medium text-center"><i class="fa-solid fa-database"></i> Strategy (Storage)</span>
+                                <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded font-medium text-center"><i class="fa-solid fa-shapes"></i> Factory (Wiring)</span>
+                                <span class="bg-amber-50 text-amber-700 px-2 py-1 rounded font-medium text-center"><i class="fa-solid fa-layer-group"></i> Template (put)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                            <h4 class="font-bold text-sm text-slate-800 mb-3"><i class="fa-solid fa-circle-nodes"></i> Structural Model</h4>
+                            <div class="mermaid flex justify-center p-2 bg-white rounded border border-slate-100">
+classDiagram
+class Cache~KV~ {
+  +get(K) V
+  +put(K, V) void
+}
+class EvictionPolicy~K~ {
+  &lt;&lt;interface&gt;&gt;
+  +keyAccessed(K) void
+  +evictKey() K
+}
+class Storage~KV~ {
+  &lt;&lt;interface&gt;&gt;
+  +add(K, V) void
+  +get(K) V
+  +remove(K) void
+}
+class LRUEvictionPolicy
+class HashMapBasedStorage
+Cache --&gt; EvictionPolicy
+Cache --&gt; Storage
+LRUEvictionPolicy ..|&gt; EvictionPolicy
+HashMapBasedStorage ..|&gt; Storage
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 text-slate-100 rounded-lg p-4 text-xs overflow-x-auto custom-scrollbar">
+                            <p class="text-slate-400 mb-2 font-semibold">// put() flow with eviction retry</p>
+<pre><code class="language-java">storage.add(key, value)
+  -> OK: evictionPolicy.keyAccessed(key)
+  -> StorageFullException:
+       k = evictionPolicy.evictKey()
+       storage.remove(k)
+       put(key, value)   // retry
+
+// LRU mechanics
+keyAccessed(key):
+  exists -> detach node, re-add at tail
+  new    -> add node at tail
+evictKey():
+  return DLL.head  // least recently used</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Splitwise Case Study -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <div class="flex flex-col lg:flex-row justify-between gap-6 mb-6">
+                        <div class="max-w-2xl">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-0.5 rounded-full uppercase">Case Study 3</span>
+                            <h3 class="font-bold text-2xl text-slate-900 mt-2">Design Splitwise (Expense Sharing)</h3>
+                            <p class="text-sm text-slate-600 mt-2">Track shared expenses across groups, split costs equally or unequally, record contributions, and settle balances &mdash; with pluggable notifications when a user is added to an expense.</p>
+                            <ul class="text-xs text-slate-500 mt-4 space-y-1.5">
+                                <li><i class="fa-solid fa-check text-green-500"></i> Business logic lives in services, not models (Service Layer).</li>
+                                <li><i class="fa-solid fa-check text-green-500"></i> Expense lifecycle: CREATED &rarr; ACTIVE &rarr; SETTLED.</li>
+                                <li><i class="fa-solid fa-check text-green-500"></i> Notifications swappable: email / SMS / push (Strategy).</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-lg p-4 flex-1">
+                            <h4 class="font-bold text-xs text-slate-400 uppercase tracking-wider mb-2">Core Pattern Checklist</h4>
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <span class="bg-pink-50 text-pink-700 px-2 py-1 rounded font-medium text-center"><i class="fa-solid fa-compass"></i> Strategy (Notify)</span>
+                                <span class="bg-sky-50 text-sky-700 px-2 py-1 rounded font-medium text-center"><i class="fa-solid fa-hammer"></i> Builder (Expense)</span>
+                                <span class="bg-emerald-50 text-emerald-700 px-2 py-1 rounded font-medium text-center"><i class="fa-solid fa-warehouse"></i> Repository</span>
+                                <span class="bg-amber-50 text-amber-700 px-2 py-1 rounded font-medium text-center"><i class="fa-solid fa-sitemap"></i> Service Layer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                        <h4 class="font-bold text-sm text-slate-800 mb-3"><i class="fa-solid fa-circle-nodes"></i> Structural Model</h4>
+                        <div class="mermaid flex justify-center p-2 bg-white rounded border border-slate-100">
+classDiagram
+class Expense {
+  -String id
+  -double amount
+  -ExpenseStatus status
+}
+class ExpenseGroup {
+  -List~User~ members
+  -Map~String,UserShare~ shares
+}
+class UserShare {
+  -double owedAmount
+  -List~Contribution~ contributions
+}
+class Contribution {
+  -double contributionValue
+}
+class NotificationService {
+  &lt;&lt;interface&gt;&gt;
+  +notifyUser(User, Expense) void
+}
+Expense --&gt; ExpenseGroup
+ExpenseGroup --&gt; UserShare
+UserShare --&gt; Contribution
+Expense ..&gt; NotificationService : on add member
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Snowflake ID Case Study -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <div class="flex flex-col lg:flex-row justify-between gap-6 mb-6">
+                        <div class="max-w-2xl">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-0.5 rounded-full uppercase">Case Study 4</span>
+                            <h3 class="font-bold text-2xl text-slate-900 mt-2">Distributed ID Generator (Twitter Snowflake)</h3>
+                            <p class="text-sm text-slate-600 mt-2">Generate globally unique, time-sortable 64-bit IDs across many nodes <strong>without coordination</strong> &mdash; 4096 IDs/ms/node &times; 1024 nodes = ~4M IDs/ms globally.</p>
+                            <ul class="text-xs text-slate-500 mt-4 space-y-1.5">
+                                <li><i class="fa-solid fa-check text-green-500"></i> Monotonically increasing &amp; sortable by creation time.</li>
+                                <li><i class="fa-solid fa-check text-green-500"></i> Clock-drift protection throws ClockMovedBackException.</li>
+                                <li><i class="fa-solid fa-check text-green-500"></i> Thread-safe via synchronized block; node ID validated at startup.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-lg p-4 flex-1">
+                            <h4 class="font-bold text-xs text-slate-400 uppercase tracking-wider mb-2">64-bit ID Layout</h4>
+                            <div class="font-mono text-[11px] text-slate-700 bg-white rounded p-2 border border-slate-100 leading-relaxed">
+                                <div><span class="text-blue-600 font-bold">41 bits</span> timestamp (~69 yrs)</div>
+                                <div><span class="text-emerald-600 font-bold">10 bits</span> node id (0&ndash;1023)</div>
+                                <div><span class="text-pink-600 font-bold">12 bits</span> sequence (0&ndash;4095)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 text-slate-100 rounded-lg p-4 text-xs overflow-x-auto custom-scrollbar">
+                        <p class="text-slate-400 mb-2 font-semibold">// generate one Snowflake ID (synchronized)</p>
+<pre><code class="language-java">currentTs = now() - EPOCH_START;
+if (currentTs < lastTimestamp) throw ClockMovedBackException;
+if (currentTs == lastTimestamp) {
+    sequence = (sequence + 1) & 4095;        // mod 4096
+    if (sequence == 0) waitNextMillis();     // overflow
+} else {
+    sequence = 0;
+}
+lastTimestamp = currentTs;
+id = (currentTs << 22) | (nodeId << 12) | sequence;
+return id;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== TAB: QUESTION BANK ==================== -->
+        <div id="content-question-bank" class="tab-content hidden space-y-8 animate-fade-in">
+            <div class="bg-gradient-to-r from-sky-900 to-sky-700 rounded-2xl p-6 text-white shadow-md">
+                <div class="flex items-center gap-3 mb-2">
+                    <i class="fa-solid fa-list-check text-sky-300 text-2xl"></i>
+                    <h2 class="text-xl font-bold">LLD Question Bank</h2>
+                </div>
+                <p class="text-white/80 text-sm max-w-4xl">60+ classic machine-coding and low-level-design problems, grouped by domain. Use the search bar above to filter.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5"><h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i class="fa-solid fa-gamepad text-indigo-500"></i> Games</h3><ul class="text-sm text-slate-600 space-y-1 list-disc pl-5"><li>Online card game (Poker)</li><li>Chess (in-memory)</li><li>Tic-tac-toe</li><li>Snake &amp; Ladder</li><li>Jackpot / slot machine</li></ul></div>
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5"><h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i class="fa-solid fa-screwdriver-wrench text-emerald-500"></i> Utilities &amp; Libraries</h3><ul class="text-sm text-slate-600 space-y-1 list-disc pl-5"><li>Finite state machine</li><li>TextPad (undo/redo)</li><li>JSON / CSV parser</li><li>Logger library</li><li>In-memory cache (LRU/LFU/FIFO)</li><li>Unit testing framework</li><li>UUID generator</li></ul></div>
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5"><h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i class="fa-solid fa-cart-shopping text-amber-500"></i> E-commerce &amp; Retail</h3><ul class="text-sm text-slate-600 space-y-1 list-disc pl-5"><li>Q&amp;A application</li><li>Amazon locker service</li><li>Vending machine</li><li>Splitwise</li><li>Live auction platform</li><li>Inventory / warehouse</li><li>Coupon &amp; promo engine</li></ul></div>
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5"><h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i class="fa-solid fa-diagram-project text-pink-500"></i> Productivity &amp; Collab</h3><ul class="text-sm text-slate-600 space-y-1 list-disc pl-5"><li>Jira / task planner</li><li>Calendar (free-slot finder)</li><li>Survey / Google Forms</li><li>Config management system</li><li>Online UML tool</li><li>ATS hiring pipeline</li></ul></div>
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5"><h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i class="fa-solid fa-truck-fast text-sky-500"></i> Transport &amp; Logistics</h3><ul class="text-sm text-slate-600 space-y-1 list-disc pl-5"><li>Parking lot</li><li>Ride-sharing (Uber/Lyft)</li><li>Car rental (Zoomcar)</li><li>Logistics / shipment tracking</li><li>Airport runway allocator</li><li>Delivery-agent heatmap</li></ul></div>
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5"><h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i class="fa-solid fa-share-nodes text-rose-500"></i> Social &amp; Content</h3><ul class="text-sm text-slate-600 space-y-1 list-disc pl-5"><li>Push notification system</li><li>LinkedIn / chat app</li><li>Chunked video upload</li><li>Forum / discussion platform</li><li>Short video feed (TikTok)</li><li>Recommendation engine</li></ul></div>
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5"><h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i class="fa-solid fa-network-wired text-violet-500"></i> Infra &amp; Distributed</h3><ul class="text-sm text-slate-600 space-y-1 list-disc pl-5"><li>Message queue (pub/sub)</li><li>Distributed ID (Snowflake)</li><li>Distributed cache</li><li>Business rules engine</li><li>Zipkin request tracer</li><li>Online code judge</li><li>RocksDB / Zookeeper</li></ul></div>
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5"><h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i class="fa-solid fa-coins text-green-600"></i> Financial &amp; Trading</h3><ul class="text-sm text-slate-600 space-y-1 list-disc pl-5"><li>Stock exchange matching engine</li><li>Stock trading dashboard</li><li>Limit order book</li><li>Payment gateway (Razorpay)</li></ul></div>
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5"><h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i class="fa-solid fa-cubes text-slate-500"></i> Specialized Domains</h3><ul class="text-sm text-slate-600 space-y-1 list-disc pl-5"><li>Home automation</li><li>Gym booking (FlipFit)</li><li>Medical appointment scheduler</li><li>Online exam portal</li></ul></div>
+            </div>
+        </div>
+
+        <!-- ==================== TAB: RESOURCES ==================== -->
+        <div id="content-resources" class="tab-content hidden space-y-8 animate-fade-in">
+            <div class="bg-gradient-to-r from-slate-900 to-slate-700 rounded-2xl p-6 text-white shadow-md">
+                <div class="flex items-center gap-3 mb-2">
+                    <i class="fa-solid fa-book text-amber-300 text-2xl"></i>
+                    <h2 class="text-xl font-bold">Curated Learning Resources</h2>
+                </div>
+                <p class="text-white/80 text-sm max-w-4xl">Books, blogs, and channels to master OOAD, design patterns, and clean code.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5">
+                    <h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i class="fa-solid fa-book-open text-[#0071CE]"></i> Essential Books</h3>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li><b>Head First Object-Oriented Analysis &amp; Design</b> &mdash; learn to analyze &amp; design OO software</li>
+                        <li><b>Head First Design Patterns</b> &mdash; visual intro to GoF patterns</li>
+                        <li><b>Clean Code</b> (Robert C. Martin) &mdash; readable, maintainable code</li>
+                        <li><b>Clean Architecture</b> &mdash; structure, boundaries, components</li>
+                        <li><b>Refactoring</b> (Martin Fowler) &mdash; improve code without breaking it</li>
+                        <li><b>Patterns of Enterprise Application Architecture</b></li>
+                        <li><b>Design Patterns: GoF</b> &mdash; the classic reference</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5">
+                    <h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i class="fa-solid fa-globe text-emerald-500"></i> Blogs &amp; Interactive</h3>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li><a class="text-[#0071CE] hover:underline" href="https://refactoring.guru/design-patterns" target="_blank" rel="noopener">Refactoring Guru</a> &mdash; beautiful visual pattern guides</li>
+                        <li><a class="text-[#0071CE] hover:underline" href="https://sourcemaking.com/" target="_blank" rel="noopener">SourceMaking</a> &mdash; patterns, anti-patterns, UML</li>
+                    </ul>
+                    <h3 class="font-bold text-slate-900 mt-5 mb-3 flex items-center gap-2"><i class="fa-solid fa-link text-pink-500"></i> In This Repo</h3>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li>15 detailed design docs in <code>/docs</code></li>
+                        <li>Reference solutions in <code>solutions.md</code> with video links</li>
+                        <li><a class="text-[#0071CE] hover:underline" href="model_comparison.html">LLM Comparison</a> &mdash; pick a coding model</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5">
+                    <h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i class="fa-brands fa-youtube text-rose-500"></i> YouTube Channels</h3>
+                    <ul class="text-sm text-slate-600 space-y-1.5 list-disc pl-5">
+                        <li>G Balasubramanian &mdash; LLD walkthroughs</li>
+                        <li>The Code Mate &mdash; LLD playlist</li>
+                        <li>LogicMojo &mdash; algorithms &amp; architecture</li>
+                        <li>Udit Agarwal &mdash; machine coding</li>
+                        <li>codeKarle &mdash; system &amp; low-level design</li>
+                        <li>Tech Dummies &mdash; system design primers</li>
+                        <li>Gaurav Sen &mdash; systems engineering</li>
+                        <li>Derek Banas &mdash; OODP code walkthroughs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive script to power tabs & search -->
+    <script>
+        function switchTab(tabId) {
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('block');
+            });
+            
+            // Deactivate all tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-[#0071CE]', 'text-white', 'shadow-sm');
+                btn.classList.add('text-slate-600', 'hover:bg-slate-50');
+            });
+            
+            // Show target content
+            const targetContent = document.getElementById(`content-${tabId}`);
+            targetContent.classList.remove('hidden');
+            targetContent.classList.add('block');
+            
+            // Activate target button
+            const targetBtn = document.getElementById(`tab-${tabId}`);
+            targetBtn.classList.remove('text-slate-600', 'hover:bg-slate-50');
+            targetBtn.classList.add('bg-[#0071CE]', 'text-white', 'shadow-sm');
+        }
+
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.relative').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.innerText);
+            
+            // Temporary check feedback
+            const icon = btn.querySelector('i');
+            icon.classList.remove('fa-regular', 'fa-copy');
+            icon.classList.add('fa-solid', 'fa-check', 'text-green-400');
+            
+            setTimeout(() => {
+                icon.classList.remove('fa-solid', 'fa-check', 'text-green-400');
+                icon.classList.add('fa-regular', 'fa-copy');
+            }, 1500);
+        }
+
+        function filterDashboard() {
+            const q = document.getElementById('dashboard-search').value.toLowerCase();
+            const cards = document.querySelectorAll('.grid > div');
+            
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                if (text.includes(q)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

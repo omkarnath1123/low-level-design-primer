@@ -1,4 +1,4 @@
-# lld-food-delivery-zomato-swiggy
+# Lld-Food-Delivery-Zomato-Swiggy
 Low Level Design of Food delivery app - Zomato, Swiggy, UberEats
 
 # Requirements

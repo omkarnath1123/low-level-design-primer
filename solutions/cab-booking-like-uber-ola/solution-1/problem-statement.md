@@ -1,9 +1,9 @@
 # Cab Booking Problem
 
-### Problem Statement:
+### Problem statement
 We want to build a cab booking platform to allow a rider to book a cab.
 
-### Details:
+### Details
 * The location is represented as a (x, y) coordinate.
 * Distance between two points (x1, y1) and(x2, y2) is sqrt((x1-x2)^2 + (y1-y2)^2)
 * Platform has decided upon maximum distance a driver has to travel to pickup a rider.
@@ -19,7 +19,6 @@ Please build an application that exposes following features to riders and driver
 * A rider can book a cab
 * Fetch history of all rides taken by a rider.
 * End the Trip
-
 
 ### Expectation from this round
 * Demonstrable code is first expectation. To do this, you can choose any interface you

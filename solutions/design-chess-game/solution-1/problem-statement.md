@@ -1,6 +1,6 @@
-### Problem Statements: Chess LLD
+### Problem statements: chess LLD
 We have to design simple chess game. Chess is actually a very popular game. You can read more about it online on wikipedia or on some other places.
- 
+
 #### Entities
 If you have already played it already then you might already know this. But to ensure that we all are on the same page, I am defining some here:
 * Board: Board is the one entity represents an actual board on which which you play this game.
@@ -8,7 +8,7 @@ If you have already played it already then you might already know this. But to e
 * Player: Someone who is actually playing right.
 * Piece: There are various types of pieces as explained below.
 
-#### Pieces and their moves:
+#### Pieces and their moves
 * King: Key entity in chess. If your king is killed then you lose. Its also called checkmate.
 * Queen: It can move any number of steps in a single move and in any direction.
 * Rook: It only moves in horizontal and vertical direction but can move any number of steps in single move.

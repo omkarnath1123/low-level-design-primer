@@ -1,4 +1,4 @@
-# Design - Expense / Bill sharing app
+# Design - Expense / Bill Sharing App
 App Allows users to share an Expense
 
 Users will be able to organize expenses among multiple heads and share with multiple users.    
@@ -18,7 +18,7 @@ Expense has three states
    1. Created
    2. Pending
    3. Settled
- 
+
 Initial state of the expense would be created.  
 Registered user should be able to create expense group i.e. to be able to add users to expenses.  
 Bifurcation is custom no need to implement equal sharing.
@@ -44,6 +44,4 @@ Notify
 Users contribute  
 Check if the bill is settled   
 If so move the expense to settled  
-  
-
 

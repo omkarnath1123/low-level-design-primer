@@ -4,11 +4,11 @@ Two solutions model a cricket scoring and information platform.
 
 ---
 
-## Solution 1 — Cricket Portal (Skeleton / Domain Model)
+## Solution 1 — cricket portal (Skeleton / domain Model)
 
-### Sub-system A: CricketPortal
+### Sub-system A: cricketportal
 
-#### Core Entities
+#### Core entities
 
 | Package | Key Classes |
 |---|---|
@@ -35,14 +35,14 @@ Team    → TournamentSquad → Playing11
 Umpire  → UmpireType (ON_FIELD / THIRD / RESERVE)
 ```
 
-### Sub-system B: MovieTicketBooking *(bundled in same solution)*
+### Sub-system B: movieticketbooking *(bundled in same solution)*
 > See [movie-ticket-booking.md](movie-ticket-booking.md) for the full breakdown.
 
 ---
 
-## Solution 2 — CricScore (Full Implementation)
+## Solution 2 — cricscore (Full Implementation)
 
-### Core Entities
+### Core entities
 
 | Class | Role |
 |---|---|
@@ -65,7 +65,7 @@ Umpire  → UmpireType (ON_FIELD / THIRD / RESERVE)
 | `MatchResult` | Winner, result type |
 | `Fall` | Fall of wicket — score + over at dismissal |
 
-### People Hierarchy
+### People hierarchy
 
 ```
 Person (abstract)
@@ -91,7 +91,7 @@ Team
 
 ---
 
-## Design Patterns
+## Design patterns
 
 | Pattern | Where |
 |---|---|
@@ -102,7 +102,7 @@ Team
 
 ---
 
-## Key Flow — Record a Ball
+## Key flow — record a ball
 
 ```
 1. Over.addBall(ball) → validate < 6 legal balls

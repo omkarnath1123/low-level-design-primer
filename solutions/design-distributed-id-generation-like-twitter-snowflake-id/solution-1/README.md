@@ -11,7 +11,7 @@ In this tutorial we are going to look in to ways to create these identifiers in 
 1. Create id in database.  
 2. Create id from backend and send to database.  
 
-## UUIDs
+## Uuids
 
 UUID - universally unique id or GUID by microsoft is a 128 bit id used to generate ids which can be generated in distributed manner and still remain unique. This uniqueness does not depend on central co-ordination between the systems creating them. So the defacto choice for many people creating unique identifiers are UUIDs. The possibility of duplication even when created in distributed manner is close to zero. Since the possible values are 2 to the power of 128 the max values is 340,​282,​366,​920,​938,​463,​463,​374,​607,​431,​768,​211,​456.  
 
@@ -19,12 +19,12 @@ Sample UUID - xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx
               907f39b0-6778-**4**c47-b173-e6348efa1641  
               M is the UUID version here we are using type 4 UUIDs  
               N is the UUID variant  
-              
+
 The default UUIDs that we create out of syntax.   
     ```
     UUID.randomUUID() is version 4 UUID
     ```
-    
+
 What are the pros and cons of UUIDs to uniquely identify records?
 
 Easy to generate.  
@@ -35,7 +35,7 @@ Random i.e. we cannot predict next id with the current id.
 UUIDs are 128 bits long which is 32 chars in length.  
 Sorting UUIDs would not result in ordering of actual records since they are random and not generated in any sequence.  
 
-## Auto incrementing Ids - Identity columns
+## Auto incrementing ids - identity columns
 
 We can use identity columns as key to generate ids for records and this will work for most of the use cases where the uniqueness is for a particular type but when we move across types or entities this approach cannot be used as it is restricted to a table. 
 
@@ -45,7 +45,7 @@ Consider capturing of occurrences in distributed systems may be take an example 
 
 One more example that we can think of is - Social networking site where user creates a post with a unique id. These posts attract likes, comments from users or people who subscribed to certain types of events. In this it would be useful to understand and trace a like or comment to a post will always have an identifier which is greater than the post itself.  
 
-## Centralized Id generation 
+## Centralized id generation
 
 We can have a service that can generate identifiers and distribute them to services. We need to handle concurrency and synchoronization. Consider the scale at which requests come for Twitter, Flickr, sale day in Amazon or Flipkart. We expect on an average of 10000 requests per second and having a centralized service to handle requests at this scale is not easy and any failure will have impact on the platform.
 

@@ -3,7 +3,7 @@
 
 ---
 
-## Core Entities
+## Core entities
 
 | Class | Role |
 |---|---|
@@ -15,7 +15,7 @@
 
 ---
 
-## Key Managers (In-Memory DB)
+## Key managers (In-Memory DB)
 
 | Manager | Responsibility |
 |---|---|
@@ -25,7 +25,7 @@
 
 ---
 
-## Key Interfaces
+## Key interfaces
 
 | Interface | Purpose | Implementations |
 |---|---|---|
@@ -47,7 +47,7 @@ Rider ──────────── Trip ──────────�
 
 ---
 
-## Design Patterns
+## Design patterns
 
 | Pattern | Where |
 |---|---|
@@ -57,7 +57,7 @@ Rider ──────────── Trip ──────────�
 
 ---
 
-## Key Flow — Book a Cab
+## Key flow — book a cab
 
 ```
 1. Rider requests trip (from, to)
@@ -71,7 +71,7 @@ Rider ──────────── Trip ──────────�
 
 ---
 
-## Constraints / Rules
-- Search radius: `MAX_ALLOWED_TRIP_MATCHING_DISTANCE = 10.0` units
-- A cab can only have **one active trip** at a time
+## Constraints / rules
+* Search radius: `MAX_ALLOWED_TRIP_MATCHING_DISTANCE = 10.0` units
+* A cab can only have **one active trip** at a time
 - `NoCabsAvailableException` thrown if no match found

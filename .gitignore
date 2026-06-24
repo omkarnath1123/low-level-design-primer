@@ -3,13 +3,8 @@
 Thumbs.db
 
 # ─── IDE — IntelliJ IDEA ──────────────────────────────────────────────────────
-# .idea/ and *.iml are NOT ignored — they are committed so IntelliJ opens
-# this repo fully indexed with all modules. Only user-local files are excluded.
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/usage.statistics.xml
-.idea/dictionaries/
-.idea/shelf/
+.idea/
+*.iml
 *.ipr
 *.iws
 

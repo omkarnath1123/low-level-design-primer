@@ -1,22 +1,23 @@
-## Video explanation: 
+## Video explanation
 https://youtu.be/7IX84K9g23U
 
-## Connect with me and my offerings:
+## Connect with me and my offerings
 https://enginebogie.com/u/anomaly2104
 
-## LLD Cohort:
+## Lld cohort
 https://enginebogie.com/u/anomaly2104/offerings/PATH/e6cce7f1-6a56-4fe3-bb82-48e1876e4596
 
-## Multi-threading Cohort: 
+## Multi-threading cohort
 https://enginebogie.com/u/anomaly2104/offerings/PATH/e9522ac1-4e4c-4217-92ba-f691f34c321b
 
 ----
-# Low Level System Design - Parking lot 
 
-### Problem Statement
+# Low Level System Design - Parking Lot
+
+### Problem statement
 [Check here](problem-statment.md)
 
-### Project Requirements
+### Project requirements
 
 * JDK 1.8
 * Maven
@@ -24,7 +25,7 @@ https://enginebogie.com/u/anomaly2104/offerings/PATH/e9522ac1-4e4c-4217-92ba-f69
   * Junit 4
   * Mockito
 
-### Compiling/Building and running the unit tests
+### Compiling/building and running the unit tests
 Go to the project root folder and then run: ./bin/setup.sh
 
 ### Runing the project
@@ -36,9 +37,8 @@ The project can be run as follows in one of the two ways:
  Example: ./bin/parking_lot.sh  ./file_input.txt
 2) **Using file based input:**: This will run the program in the interactive shell mode where commands can be typed in.  
   ./bin/parking_lot.sh 
-  
 
-### Further Enhancements:
+### Further enhancements
 
 * Dependency injection: Currently dependencies are injected manually. We can use some 
 dependency injection framework like spring. 

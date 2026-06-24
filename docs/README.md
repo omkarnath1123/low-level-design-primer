@@ -1,4 +1,4 @@
-# LLD Docs — Kulfi's Design Notes
+# Lld Docs — Kulfi'S Design Notes
 
 Concise LLD breakdowns for every solution in this repo.
 Each doc covers: **entities · relationships · interfaces · design patterns · key flows**.
@@ -27,7 +27,7 @@ Each doc covers: **entities · relationships · interfaces · design patterns ·
 
 ---
 
-## How to Read These Docs
+## How to read these docs
 
 Each doc follows this structure:
 
@@ -45,7 +45,7 @@ Each doc follows this structure:
 
 ---
 
-## Quick Pattern Reference
+## Quick pattern reference
 
 | Pattern | Used in |
 |---|---|

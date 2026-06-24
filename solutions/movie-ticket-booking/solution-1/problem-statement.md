@@ -1,4 +1,4 @@
-## Movie Ticket Booking Application
+## Movie ticket booking application
 
 Implement a Movie Ticket Booking Application for a Theatre. Refer to the following details:  
 * A Theatre has Screens that run Shows for different Movies. Each Show has a particular Movie, start time, duration, and is played in a particular Screen in the theatre. Each Screen has an arrangement of Seats that can be booked by Users.
@@ -10,11 +10,11 @@ Implement a Movie Ticket Booking Application for a Theatre. Refer to the followi
 * If Payment SUCCEEDS, Ticket or Booking Confirmation is generated and made available to the User. The UserBookingSession is closed and the Seats are made PERMANENTLY_UNAVAILABLE.
 * A User can also explicitly close the UserBookingSession after selecting seats and before making payment. In this case, the seats selected are made AVAILABLE once again.
 
-### Problems:
+### Problems
 Demonstrate the following scenarios:  
 2 concurrent Users U1, U2 in the application. The Users can retrieve Available Shows and select one show.
 
-#### Case 1:
+#### Case 1
 1. Say U1 and U2 select same show.
 2. U1 requests for and gets all Available Seats for this show.
 3. U1 selects group of seats and proceeds to pay.
@@ -22,7 +22,7 @@ Demonstrate the following scenarios:
 5 .Payment succeeded for U1.
 6. U1 receives Ticket with Seats confirmed.
 
-#### Case 2:
+#### Case 2
 1. Say U1 and U2 select same show.
 2. U1 and U2 requests for and gets all Available Seats for this show.
 3. U1 selects group of seats.
@@ -31,14 +31,14 @@ Demonstrate the following scenarios:
 6. Payment failed for U1. Assume maximum retries as zero just for the demo. Also show in another scenario where U1’s UserBookingSession is explicitly closed by U1 before payment is completed.
 7. U2 again requests for and gets all Available Seats for this show. U2 should now see the seats previously selected by U1 as AVAILABLE.
 
-#### Case 3:
+#### Case 3
 1. Say U1 and U2 select same show.
 2. U1 and U2 request for and get all Available Seats for this show.
 3. U1 selects group of seats and proceeds to pay.
 4. U2 selects overlapping group of seats and proceeds to pay. U2 should be notified that
 “one or more of the selected seats are not available at this moment”.
 
-#### Bonus:
+#### Bonus
 Have a configurable timeout for a UserBookingSession. Show that if User selects and Payment is not completed by timeout, then the UserBookingSession is closed and the seats selected are made AVAILABLE.
 
 #### Expectations

@@ -3,7 +3,7 @@
 
 ---
 
-## Core Entities
+## Core entities
 
 | Class | Role |
 |---|---|
@@ -18,7 +18,7 @@
 
 ---
 
-## Key Services
+## Key services
 
 | Service | Responsibility |
 |---|---|
@@ -31,7 +31,7 @@
 
 ---
 
-## Seat Locking (Interface + Provider)
+## Seat locking (Interface + Provider)
 
 | Class | Role |
 |---|---|
@@ -40,7 +40,7 @@
 
 ---
 
-## REST Controllers
+## Rest controllers
 
 | Controller | Endpoints |
 |---|---|
@@ -75,7 +75,7 @@ SeatLock (per show+seat)
 
 ---
 
-## Design Patterns
+## Design patterns
 
 | Pattern | Where |
 |---|---|
@@ -86,7 +86,7 @@ SeatLock (per show+seat)
 
 ---
 
-## Key Flow — Book a Seat
+## Key flow — book a seat
 
 ```
 1. User queries ShowService → available shows

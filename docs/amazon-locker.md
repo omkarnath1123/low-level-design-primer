@@ -3,7 +3,7 @@
 
 ---
 
-## Core Entities
+## Core entities
 
 | Class | Role |
 |---|---|
@@ -20,7 +20,7 @@
 
 ---
 
-## Key Services
+## Key services
 
 | Service | Responsibility |
 |---|---|
@@ -66,7 +66,7 @@ Pack  → LockerSize (determined by SizeUtil)
 
 ---
 
-## Design Patterns
+## Design patterns
 
 | Pattern | Where |
 |---|---|
@@ -76,7 +76,7 @@ Pack  → LockerSize (determined by SizeUtil)
 
 ---
 
-## Key Flows
+## Key flows
 
 **Delivery Flow:**
 ```

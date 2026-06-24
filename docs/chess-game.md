@@ -3,7 +3,7 @@
 
 ---
 
-## Core Entities
+## Core entities
 
 | Class | Role |
 |---|---|
@@ -17,7 +17,7 @@
 
 ---
 
-## Key Interfaces & Abstractions
+## Key interfaces & abstractions
 
 | Abstraction | Purpose | Implementations |
 |---|---|---|
@@ -51,7 +51,7 @@ GameController → List<Player> + Board
 
 ---
 
-## Design Patterns
+## Design patterns
 
 | Pattern | Where |
 |---|---|
@@ -63,7 +63,7 @@ GameController → List<Player> + Board
 
 ---
 
-## Piece → Moves Mapping
+## Piece → moves mapping
 
 | Piece | Providers | maxSteps |
 |---|---|---|
@@ -76,7 +76,7 @@ GameController → List<Player> + Board
 
 ---
 
-## Key Flow — Make a Move
+## Key flow — make a move
 
 ```
 1. player.makeMove() → PlayerMove(piece, toCell)

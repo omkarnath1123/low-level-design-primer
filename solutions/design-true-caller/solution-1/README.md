@@ -1,6 +1,6 @@
-# True caller
+# True Caller
 
-## Design True caller / WhosCall / Showcaller
+## Design true caller / whoscall / showcaller
 
 Come up with application that can perform  
 * Caller identification  

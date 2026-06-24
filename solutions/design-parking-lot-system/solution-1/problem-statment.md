@@ -1,4 +1,4 @@
-## Problem Statement
+## Problem statement
 
 I own a parking lot that can hold up to 'n' cars at any given point in time. Each slot is
 given a number starting at 1 increasing with increasing distance from the entry point
@@ -28,10 +28,10 @@ don't want two distinct submissions.
    commands can be typed in
 1. It should accept a filename as a parameter at the command prompt and read the
    commands from that file
-   
-### Example: File
 
-#### Input (contents of file):
+### Example: file
+
+#### Input (contents of file)
 create_parking_lot 6  
 park KA-01-HH-1234 White  
 park KA-01-HH-9999 White  
@@ -71,7 +71,7 @@ KA-01-HH-1234, KA-01-HH-9999, KA-01-P-333
 6  
 Not found
 
-### Example: Interactive
+### Example: interactive
 Assuming a parking lot with 6 slots, the following commands should be run in
 sequence by typing them in at a prompt and should produce output as described
 below the command. Note that `exit` terminates the process and returns control to

@@ -1,9 +1,9 @@
-# Food Delivery — Uber Eats / DoorDash / Swiggy
+# Food Delivery — Uber Eats / Doordash / Swiggy
 > Browse restaurants, manage cart, place orders, track delivery, handle payments with pricing strategies.
 
 ---
 
-## Core Entities
+## Core entities
 
 | Class | Role |
 |---|---|
@@ -20,7 +20,7 @@
 
 ---
 
-## Data Stores (in-memory maps)
+## Data stores (in-memory maps)
 
 | Store | Holds |
 |---|---|
@@ -34,7 +34,7 @@
 
 ---
 
-## Key Services
+## Key services
 
 | Service | Responsibility |
 |---|---|
@@ -49,7 +49,7 @@
 
 ---
 
-## Key Interfaces
+## Key interfaces
 
 | Interface | Implementations | Purpose |
 |---|---|---|
@@ -73,7 +73,7 @@ PricingService
 
 ---
 
-## Design Patterns
+## Design patterns
 
 | Pattern | Where |
 |---|---|
@@ -85,7 +85,7 @@ PricingService
 
 ---
 
-## Key Flow — Place an Order
+## Key flow — place an order
 
 ```
 1. User browses RestaurantService → picks restaurant
@@ -101,7 +101,7 @@ PricingService
 
 ---
 
-## Enums Summary
+## Enums summary
 
 | Enum | Values |
 |---|---|

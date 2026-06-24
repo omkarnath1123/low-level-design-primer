@@ -1,4 +1,4 @@
-## Design Parking lot
+## Design parking lot
 
 ![Image of Parking lot](https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Subterranean_parking_lot.jpg/2880px-Subterranean_parking_lot.jpg)
 
@@ -25,7 +25,7 @@ User should not be issued a ticket if the slot is not available.
 As the user is allocated a slot the inventory of the slots gets reduced.  
 Add user leaves the parking the inventory get updated.  
 
-# Admin Test cases
+# Admin Test Cases
 Admin Case 1 - should be able to add parking floor case  
 Admin Case 2 - should be able to add parking floor case  
 Admin Case 3 - should be able to add entrance panel  
@@ -34,7 +34,7 @@ Admin case 5 - should be able to add car parking spot
 Admin case 6 - should be able to add bike parking spot  
 Admin case 7 - should be able to add car parking spot  
 
-#User Test cases
+# User Test Cases
 Test case 1 - check for availability of parking lot - TRUE  
 Test case 2 - check for availability of parking lot - FALSE  
 Test case 3 - check for availability of parking lot - FALSE  
